@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{70DCC5F1-5665-4941-827B-AE880723FFD8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeeloUI</RootNamespace>
+    <AssemblyName>CodeeloUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\CodeeloAnimateForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CodeeloAnimateForm.Designer.cs">
+      <DependentUpon>CodeeloAnimateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CodeeloButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CodeeloCircularProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CodeeloComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CodeeloGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CodeeloNotification.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CodeeloNotification.Designer.cs">
+      <DependentUpon>CodeeloNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CodeeloPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CodeeloDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CodeeloGradientPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CodeeloRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CodeeloScrollBarVertical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CodeeloSeparator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CodeeloShadowEffect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CodeeloShadowEffect.Designer.cs">
+      <DependentUpon>CodeeloShadowEffect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CodeeloTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CodeeloTextBox.Designer.cs">
+      <DependentUpon>CodeeloTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CodeeloToggleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Graphics\FormAnimateEffects.cs" />
+    <Compile Include="SupportControls\Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupportControls\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\NotificationAction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graphics\CustomGraphicsPath.cs" />
+    <Compile Include="Enums\TextPosition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\CodeeloTextBox.resx">
+      <DependentUpon>CodeeloTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupportControls\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendarWhite_34px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendarBlack_34px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pin_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unpin_20px.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
