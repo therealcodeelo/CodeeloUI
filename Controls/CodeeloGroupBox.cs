@@ -135,15 +135,16 @@ namespace CodeeloUI.Controls
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
             using (var borderPen = new Pen(BorderColor, borderWidth))
             using (var headerBrush = new SolidBrush(BorderColor))
-            using (var borderPath = CustomGraphicsPath.GetFigurePath(Rectangle.Inflate(ClientRectangle, -1, -1), borderRadius))
+            using (var borderPath = CustomGraphicsPath.GetFigurePath(Rectangle.Inflate(ClientRectangle, -1, -1), borderRadius)) 
+            using (var figurePath = CustomGraphicsPath.GetFigurePath(Rectangle.Inflate(ClientRectangle, -borderWidth + borderRadius / 3, -borderWidth + borderRadius / 3), borderRadius)) 
             {
                 if (borderRadius > 2)
                 {
                     borderPen.Alignment = PenAlignment.Inset;
                     graphics.DrawPath(borderPen, borderPath);
-                    graphics.FillPath(new SolidBrush(FillColor), borderPath);
-                    graphics.FillRectangle(headerBrush, 0f, HeaderHeight / 2f, Width - 1f, (HeaderHeight / 2f) + 2f);
-                    graphics.FillPath(headerBrush, CustomGraphicsPath.GetFigurePath(new Rectangle(0, 0, Width - 1, HeaderHeight), borderRadius));
+                    graphics.FillPath(new SolidBrush(FillColor), figurePath);
+                    graphics.FillRectangle(headerBrush, 0.8f, (HeaderHeight / 2f)+2, Width - 1.6f, HeaderHeight / 2f);
+                    graphics.FillPath(headerBrush, CustomGraphicsPath.GetFigurePath(new RectangleF(0f, 0f, Width - 1F, HeaderHeight), borderRadius));
                 }
                 else
                 {                   
@@ -175,6 +176,7 @@ namespace CodeeloUI.Controls
                     break;
             }
             graphics.DrawString(Text, Font, new SolidBrush(ForeColor), positionX, positionY);
+         //   graphics.DrawString(Text, Font, new SolidBrush(Color.FromArgb(64,ForeColor)), positionX+1, positionY+1);
         }
 
         protected override void OnMouseEnter(EventArgs e)

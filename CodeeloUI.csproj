@@ -52,6 +52,12 @@
     <Compile Include="Components\CodeeloAnimateForm.Designer.cs">
       <DependentUpon>CodeeloAnimateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\CodeeloFormDrag.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CodeeloFormDrag.Designer.cs">
+      <DependentUpon>CodeeloFormDrag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CodeeloButton.cs">
       <SubType>Component</SubType>
     </Compile>

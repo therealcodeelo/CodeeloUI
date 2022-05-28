@@ -75,13 +75,7 @@ namespace CodeeloUI.Components
             InitializeComponent();
         }
 
-        #region [ События ]
-
-        #endregion
-
         #region [ Методы ]
-        public override string ToString() => string.Empty;
-
         private Rectangle GetRectangleWithShadow()
         {
             int locationX = SourceControl.Location.X - ShadowPadding.Left;
@@ -105,6 +99,21 @@ namespace CodeeloUI.Components
             return maxLeftRightPadding > maxTopBottomPadding ? maxLeftRightPadding : maxTopBottomPadding;
         }
 
+        internal static GraphicsPath GetFigurePath(RectangleF rect, float radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            float diameter = radius * 2F;
+            path.StartFigure();
+            path.AddArc(rect.X, rect.Y, diameter, diameter, 180, 90);
+            path.AddArc(rect.Right - diameter, rect.Y, diameter, diameter, 270, 90);
+            path.AddArc(rect.Right - diameter, rect.Bottom - diameter, diameter, diameter, 0, 90);
+            path.AddArc(rect.X, rect.Bottom - diameter, diameter, diameter, 90, 90);
+            path.CloseFigure();
+            return path;
+        }
+        #endregion
+
+        #region [ События ]
         private void SourceControlParent_Paint(object sender, PaintEventArgs e)
         {
             if (!SourceControl.Visible)
