@@ -109,6 +109,10 @@
     <Compile Include="Controls\CodeeloToggleButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\CodeeloCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Enums\CheckBoxMark.cs" />
     <Compile Include="Graphics\FormAnimateEffects.cs" />
     <Compile Include="SupportControls\Notification.cs">
       <SubType>Form</SubType>

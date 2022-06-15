@@ -42,7 +42,7 @@ namespace CodeeloUI.Controls
             }
         }
         [Description("Размер кнопки"), Category("Настройки внешнего вида")]
-        public float ButtonCircleSize
+        public float ButtonAreaSize
         {
             get => _buttonSize;
             set
