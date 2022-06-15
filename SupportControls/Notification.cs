@@ -16,13 +16,13 @@ namespace CodeeloUI.SupportControls
         private BackgroundWorker _backgroundWorker;
         private bool isPinned;
 
-        private int _lifeTime;
-        private string _message;
+        private readonly int _lifeTime;
+        private readonly string _message;
         private readonly double _hoveredOpacity = 1.0;
         private readonly double _regularOpacity = 0.6;
         
 
-        public Notification(Size size, Color backColor, Font font, int textHeight, int lifeTime, 
+        public Notification(Size size, Color backColor, Font font,Color foreColor, int textHeight, int lifeTime, 
             string message, Image logoImage, double hoveredOpacity, double regularOpacity)
         {
             InitializeComponent();
@@ -30,6 +30,7 @@ namespace CodeeloUI.SupportControls
             Size = size;
             BackColor = backColor;
             Font = font;
+            ForeColor = foreColor;
             NotificationLogo.Image = logoImage;
 
             if (textHeight > Height)

@@ -16,7 +16,8 @@ namespace CodeeloUI.Components
 
         #region [ Свойства класса ]
         public Size Size { get => _size; set => _size = value; }
-        public Color BackColor { get; set; }
+        public Color BackColor { get; set; } = Color.DarkGray;
+        public Color ForeColor { get; set; } = Color.White;
         public Font Font { get => _font; set => _font = value; }
         public Image LogoImage { get; set; }
         public double HoveredOpacity
@@ -56,7 +57,7 @@ namespace CodeeloUI.Components
                 textHeight += textHeight / 4;
             }
 
-            var newNotification = new Notification(Size, BackColor, Font, textHeight,
+            var newNotification = new Notification(Size, BackColor, Font,ForeColor, textHeight,
                 ShowDurationInSeconds, notificationText, LogoImage, HoveredOpacity, RegularOpacity);
             newNotification.ShowNotification();
             //using ()
