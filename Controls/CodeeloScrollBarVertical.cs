@@ -9,8 +9,8 @@ using CodeeloUI.Graphics;
 namespace CodeeloUI.Controls
 {
     [ToolboxBitmap(typeof(VScrollBar))]
-    [ToolboxItem(true)]
-    [Description("Настраиваемая кнопка")]
+    [ToolboxItem(false)]
+    [Description("Вертикальная полоса прокрутки")]
     public class CodeeloScrollBarVertical : UserControl
     {
         #region [ Поля класса ]
@@ -29,13 +29,9 @@ namespace CodeeloUI.Controls
         private int _clickPoint;
         private int _sliderTop;
 
-
-
-        protected int moValue;
-        
-
-        private bool mosliderDown;
-        private bool mosliderDragging;
+        private int _mouseValue;
+        private bool _mouseSliderDown;
+        private bool _mouseSliderDrag;
 
         public new event EventHandler Scroll;
         public event EventHandler ValueChanged;
@@ -81,24 +77,24 @@ namespace CodeeloUI.Controls
         }
         public int Value
         {
-            get => moValue;
+            get => _mouseValue;
             set
             {
-                moValue = value;
+                _mouseValue = value;
 
-                int sliderHeight = GetSliderHeight();
+                var sliderHeight = GetSliderHeight();
 
                 //figure out value
-                int nPixelRange = AreaHeight - sliderHeight;
-                int nRealRange = (MaxValue - MinValue) - MaxIncreaseValue;
-                float fPerc = 0.0f;
-                if (nRealRange != 0)
+                var pixelRange = AreaHeight - sliderHeight;
+                var realRange = (MaxValue - MinValue) - MaxIncreaseValue;
+
+                var percent = 0.0f;
+                if (realRange != 0)
                 {
-                    fPerc = moValue / (float)nRealRange;
+                    percent = _mouseValue / (float)realRange;
                 }
 
-                float fTop = fPerc * nPixelRange;
-                _sliderTop = (int)fTop;
+                _sliderTop = (int)(percent * pixelRange);
 
                 Invalidate();
             }
@@ -122,11 +118,6 @@ namespace CodeeloUI.Controls
         {
             get => _sliderSecondFillColor;
             set => _sliderSecondFillColor = value;
-        }
-        public Color ArrowFillColor
-        {
-            get => _arrowFillColor;
-            set => _arrowFillColor = value;
         }
 
         public LinearGradientMode AreaGradientDirection
@@ -156,7 +147,7 @@ namespace CodeeloUI.Controls
             base.MinimumSize =
                 new Size(12, 2 * 12 + GetSliderHeight());
             base.MaximumSize =
-                new Size(12*2, 2048);
+                new Size(12 * 2, 2048);
             Console.WriteLine(GetSliderHeight());
         }
         #region [ Методы ]
@@ -177,42 +168,38 @@ namespace CodeeloUI.Controls
         }
         private void MoveSlider(int y)
         {
-            int nRealRange = MaxValue - MinValue;
-
-            int sliderHeight = GetSliderHeight();
-
-            int nSpot = _clickPoint;
-
-            int nPixelRange = AreaHeight - sliderHeight;
-            if (mosliderDown && nRealRange > 0)
+            var realRange = MaxValue - MinValue;
+            var sliderHeight = GetSliderHeight();
+            var clickPoint = _clickPoint;
+            var pixelRange = AreaHeight - sliderHeight - Width / 2;
+            
+            if (!_mouseSliderDown || realRange <= 0) 
+                return;
+            
+            if (pixelRange <= 0) 
+                return;
+                
+            if (y - (Width + clickPoint) < 0)
             {
-                if (nPixelRange > 0)
-                {
-                    int nNewSliderTop = y - (Width + nSpot);
-
-                    if (nNewSliderTop < 0)
-                    {
-                        _sliderTop = nNewSliderTop = 0;
-                    }
-                    else if (nNewSliderTop > nPixelRange)
-                    {
-                        _sliderTop = nNewSliderTop = nPixelRange;
-                    }
-                    else
-                    {
-                        _sliderTop = y - (Width + nSpot);
-                    }
-
-                    //figure out value
-                    float fPerc = _sliderTop / (float)nPixelRange;
-                    float fValue = fPerc * (MaxValue - MaxIncreaseValue);
-                    moValue = (int)fValue;
-
-                    Application.DoEvents();
-
-                    Invalidate();
-                }
+                _sliderTop = 0;
             }
+            else if (y - (Width + clickPoint) > pixelRange)
+            {
+                _sliderTop = pixelRange;
+            }
+            else
+            {
+                _sliderTop = y - (Width + clickPoint);
+            }
+
+            //figure out value
+            float fPerc = _sliderTop / (float)pixelRange;
+            float fValue = fPerc * (MaxValue - MaxIncreaseValue);
+            _mouseValue = (int)fValue;
+
+            Application.DoEvents();
+
+            Invalidate();
         }
         #endregion
 
@@ -227,106 +214,61 @@ namespace CodeeloUI.Controls
             using (var bottomTriangle = CustomGraphicsPath.GetTopSideTriangle(Width - 4, (Width - (Width - 4)) / 2, AreaHeight + Width + 5))
             using (var areaBrush = new LinearGradientBrush(ClientRectangle, AreaFirstFillColor, AreaSecondFillColor, AreaGradientDirection)) 
             using (var sliderBrush = new LinearGradientBrush(ClientRectangle, SliderFirstFillColor, SliderSecondFillColor, SliderGradientDirection))
-            using (var arrowBrush = new SolidBrush(ArrowFillColor))
             {
-                e.Graphics.FillPath(arrowBrush, topTriangle);
                 e.Graphics.FillPath(areaBrush, areaPath);
                 e.Graphics.FillPath(sliderBrush, sliderPath);
-                e.Graphics.FillPath(arrowBrush, bottomTriangle);
             }
         }
         private void CustomScrollbar_MouseDown(object sender, MouseEventArgs e)
         {
             var clickPoint = PointToClient(Cursor.Position);
             int sliderHeight = GetSliderHeight();
-            int nTop = _sliderTop;
+            int topPoint = _sliderTop;
 
-            //   nTop += Width;
-
-            var sliderRect = new Rectangle(0, nTop, Width, sliderHeight);
+            var sliderRect = new Rectangle(0, topPoint, Width, sliderHeight);
             if (sliderRect.Contains(clickPoint))
             {
-                _clickPoint = (clickPoint.Y - nTop);
-                mosliderDown = true;
+                _clickPoint = (clickPoint.Y - topPoint);
+                _mouseSliderDown = true;
             }
 
-            var upArrowRect = new Rectangle(0, 0, Width, Width);
-            if (upArrowRect.Contains(clickPoint))
-            {
-                int nRealRange = (MaxValue - MinValue) - MaxIncreaseValue;
-                int nPixelRange = AreaHeight - sliderHeight;
-                if (nRealRange > 0)
-                {
-                    if (nPixelRange > 0)
-                    {
-                        if ((_sliderTop - MinIncreaseValue) < 0)
-                            _sliderTop = 0;
-                        else
-                            _sliderTop -= MinIncreaseValue;
+            int realRange = (MaxValue - MinValue) - MaxIncreaseValue;
+            int pixelRange = AreaHeight - sliderHeight;
 
-                        //figure out value
-                        float fPerc = _sliderTop / (float)nPixelRange;
-                        float fValue = fPerc * (MaxValue - MaxIncreaseValue);
+            if (realRange <= 0)
+                return;
+            if (pixelRange <= 0)
+                return;
 
-                        moValue = (int)fValue;
 
-                        if (ValueChanged != null)
-                            ValueChanged(this, new EventArgs());
+            float percent = _sliderTop / (float)pixelRange;
+            float value = percent * (MaxValue - MaxIncreaseValue);
 
-                        if (Scroll != null)
-                            Scroll(this, new EventArgs());
+            _mouseValue = (int)value;
 
-                        Invalidate();
-                    }
-                }
-            }
+            if (ValueChanged != null)
+                ValueChanged(this, new EventArgs());
 
-            Rectangle downArrowRect = new Rectangle(0, Width + AreaHeight, Width, Width);
-            if (downArrowRect.Contains(clickPoint))
-            {
-                int nRealRange = (MaxValue - MinValue) - MaxIncreaseValue;
-                int nPixelRange = AreaHeight - sliderHeight;
-                if (nRealRange > 0)
-                {
-                    if (nPixelRange > 0)
-                    {
-                        if ((_sliderTop + MinIncreaseValue) > nPixelRange)
-                            _sliderTop = nPixelRange;
-                        else
-                            _sliderTop += MinIncreaseValue;
+            if (Scroll != null)
+                Scroll(this, new EventArgs());
 
-                        //figure out value
-                        float fPerc = _sliderTop / (float)nPixelRange;
-                        float fValue = fPerc * (MaxValue - MaxIncreaseValue);
-
-                        moValue = (int)fValue;
-
-                        if (ValueChanged != null)
-                            ValueChanged(this, new EventArgs());
-
-                        if (Scroll != null)
-                            Scroll(this, new EventArgs());
-
-                        Invalidate();
-                    }
-                }
-            }
+            Invalidate();
         }
 
         private void CustomScrollbar_MouseUp(object sender, MouseEventArgs e)
         {
-            mosliderDown = false;
-            mosliderDragging = false;
+            _mouseSliderDown = false;
+            _mouseSliderDrag = false;
         }
 
         private void CustomScrollbar_MouseMove(object sender, MouseEventArgs e)
         {
-            if (mosliderDown)
+            if (_mouseSliderDown)
             {
-                mosliderDragging = true;
+                _mouseSliderDrag = true;
             }
 
-            if (mosliderDragging)
+            if (_mouseSliderDrag)
             {
                 MoveSlider(e.Y);
             }

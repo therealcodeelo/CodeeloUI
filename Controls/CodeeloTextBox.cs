@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Design;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using CodeeloUI.Graphics;
@@ -107,6 +108,7 @@ namespace CodeeloUI.Controls
             }
         }
         [Description("Текст элемента"), Category("Настройки текста")]
+        [Browsable(true)]
         public override string Text
         {
             get
