@@ -46,6 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\Animator\AnimationExtensions.cs" />
+    <Compile Include="Animation\Animator\AnimationStatus.cs" />
+    <Compile Include="Animation\Animator\Animator.cs" />
+    <Compile Include="Animation\Effects\Color\ColorChannelShiftEffect.cs" />
+    <Compile Include="Animation\Effects\Color\ColorShiftEffect.cs" />
+    <Compile Include="Animation\Effects\ControlExtensions.cs" />
+    <Compile Include="Animation\Effects\Font\FontSizeEffect.cs" />
+    <Compile Include="Animation\Effects\ImageExtensions.cs" />
+    <Compile Include="Animation\Effects\Opacity\ControlFadeEffect.cs" />
+    <Compile Include="Animation\Effects\Opacity\ControlFadeEffectWithImageBlend.cs" />
+    <Compile Include="Animation\Effects\Opacity\FormFadeEffect.cs" />
+    <Compile Include="Animation\Effects\Opacity\State.cs" />
+    <Compile Include="Animation\Effects\Transform\BottomAnchoredHeightEffect.cs" />
+    <Compile Include="Animation\Effects\Transform\FoldEffect.cs" />
+    <Compile Include="Animation\Effects\Transform\HorizontalFoldEffect.cs" />
+    <Compile Include="Animation\Effects\Transform\LeftAnchoredWidthEffect.cs" />
+    <Compile Include="Animation\Effects\Transform\RightAnchoredWidthEffect.cs" />
+    <Compile Include="Animation\Effects\Transform\TopAnchoredHeightEffect.cs" />
+    <Compile Include="Animation\Effects\Transform\VerticalFoldEffect.cs" />
+    <Compile Include="Animation\Effects\Transform\YLocationEffect.cs" />
     <Compile Include="Components\CodeeloAnimateForm.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -112,8 +132,11 @@
     <Compile Include="Controls\CodeeloCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Animation\Animator\EasingFunctions.cs" />
+    <Compile Include="Animation\Effects\EffectInteractions.cs" />
     <Compile Include="Enums\CheckBoxMark.cs" />
     <Compile Include="Graphics\FormAnimateEffects.cs" />
+    <Compile Include="Animation\Effects\IEffect.cs" />
     <Compile Include="SupportControls\Notification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +152,7 @@
     </Compile>
     <Compile Include="Graphics\CustomGraphicsPath.cs" />
     <Compile Include="Enums\TextPosition.cs" />
+    <Compile Include="Animation\Effects\Transform\XLocationEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\CodeeloTextBox.resx">
@@ -157,5 +181,6 @@
   <ItemGroup>
     <None Include="Resources\unpin_20px.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

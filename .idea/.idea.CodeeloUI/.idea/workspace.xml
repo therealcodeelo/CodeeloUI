@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="675d853c-eaf1-4999-a355-76d417485115" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CodeeloUI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CodeeloUI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controls/CodeeloScrollBarVertical.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloScrollBarVertical.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeeloUI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CodeeloUI.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +41,9 @@
       <workItem from="1653122178536" duration="156000" />
       <workItem from="1654311597412" duration="693000" />
       <workItem from="1654440554514" duration="284000" />
+      <workItem from="1655306371130" duration="47000" />
+      <workItem from="1655549708743" duration="248000" />
+      <workItem from="1655550184693" duration="105000" />
     </task>
     <servers />
   </component>
