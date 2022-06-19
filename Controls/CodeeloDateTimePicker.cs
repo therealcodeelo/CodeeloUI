@@ -72,6 +72,7 @@ namespace CodeeloUI.Controls
             SetStyle(ControlStyles.UserPaint, true);
             MinimumSize = new Size(0, 35);
             Font = new Font(Font.Name, 9.5F);
+            DoubleBuffered = true;
         }
         #region [ События ]
         protected override void OnDropDown(EventArgs eventargs)

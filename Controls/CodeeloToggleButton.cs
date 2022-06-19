@@ -93,6 +93,7 @@ namespace CodeeloUI.Controls
             MinimumSize = new Size(45, 22);
             Size = new Size(60, 22);
             BackColor = Color.Transparent;
+            DoubleBuffered = true;
         }
         #region [ События ]
         protected override void OnPaint(PaintEventArgs e)

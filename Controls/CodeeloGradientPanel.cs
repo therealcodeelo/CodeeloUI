@@ -82,6 +82,11 @@ namespace CodeeloUI.Controls
         public new AutoSizeMode AutoSizeMode { get; set; }
         #endregion
 
+        public CodeeloGradientPanel()
+        {
+            DoubleBuffered = true;
+        }
+
         #region [ События ]
         protected override void OnPaint(PaintEventArgs e)
         {

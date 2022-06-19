@@ -173,6 +173,7 @@ namespace CodeeloUI.Controls
         #endregion
         public CodeeloComboBox()
         {
+            DoubleBuffered = true;
             _combobox = new ComboBox();
             _button = new Button();
             SuspendLayout();

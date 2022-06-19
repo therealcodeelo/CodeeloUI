@@ -72,6 +72,12 @@
     <Compile Include="Components\CodeeloAnimateForm.Designer.cs">
       <DependentUpon>CodeeloAnimateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\CodeeloAnimator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CodeeloAnimator.Designer.cs">
+      <DependentUpon>CodeeloAnimator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\CodeeloFormDrag.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -134,7 +140,9 @@
     </Compile>
     <Compile Include="Animation\Animator\EasingFunctions.cs" />
     <Compile Include="Animation\Effects\EffectInteractions.cs" />
+    <Compile Include="Enums\AnimationEffect.cs" />
     <Compile Include="Enums\CheckBoxMark.cs" />
+    <Compile Include="Enums\EasingFunction.cs" />
     <Compile Include="Graphics\FormAnimateEffects.cs" />
     <Compile Include="Animation\Effects\IEffect.cs" />
     <Compile Include="SupportControls\Notification.cs">

@@ -9,7 +9,7 @@ namespace CodeeloUI.Animation.Animator
         private readonly Stopwatch _stopwatch;
 
         public long ElapsedMilliseconds => _stopwatch.ElapsedMilliseconds;
-        private CancellationTokenSource CancellationToken { get; set; }
+        public CancellationTokenSource CancellationToken { get; private set; }
         public bool IsCompleted { get; set; }
 
         public AnimationStatus(CancellationTokenSource token, Stopwatch stopwatch)

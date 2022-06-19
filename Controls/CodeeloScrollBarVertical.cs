@@ -148,7 +148,8 @@ namespace CodeeloUI.Controls
                 new Size(12, 2 * 12 + GetSliderHeight());
             base.MaximumSize =
                 new Size(12 * 2, 2048);
-            Console.WriteLine(GetSliderHeight());
+
+            DoubleBuffered = true;
         }
         #region [ Методы ]
         private int GetSliderHeight()

@@ -16,7 +16,7 @@ namespace CodeeloUI.Controls
         private Color _buttonColor = Color.FromArgb(221, 221, 221);
         private Color _markColor = Color.FromArgb(221, 221, 221);
         private float _buttonSize = 18F;
-        private bool _drawCircle = true;
+        private bool _drawCircle = false;
         private float _buttonBorderSize = 1.6F;
         private int _markWidth = 3;
         private CheckBoxMark _mark = CheckBoxMark.Mark;
@@ -108,6 +108,7 @@ namespace CodeeloUI.Controls
         public CodeeloCheckBox()
         {
             Font = new Font(FontFamily.GenericSerif, 12);
+            DoubleBuffered = true;
         }
 
         #region [ События ]

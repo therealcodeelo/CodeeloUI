@@ -148,6 +148,7 @@ namespace CodeeloUI.Controls
         public CodeeloTextBox()
         {
             InitializeComponent();
+            DoubleBuffered = true;
         }
 
         #region [ Методы ]

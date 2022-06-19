@@ -138,6 +138,7 @@ namespace CodeeloUI.Controls
                 | ControlStyles.SupportsTransparentBackColor 
                 | ControlStyles.AllPaintingInWmPaint 
                 | ControlStyles.OptimizedDoubleBuffer, true);
+            DoubleBuffered = true;
         }
 
         #region [ События ]

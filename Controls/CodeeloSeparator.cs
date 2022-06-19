@@ -51,7 +51,12 @@ namespace CodeeloUI.Controls
             }
         }
         #endregion
-        public CodeeloSeparator() => SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+        public CodeeloSeparator()
+        {
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            DoubleBuffered = true;
+            BackColor = Color.Transparent;
+        }
 
         #region [ События ]
         protected override void OnPaint(PaintEventArgs e)

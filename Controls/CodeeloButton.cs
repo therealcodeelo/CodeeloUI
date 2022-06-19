@@ -243,6 +243,7 @@ namespace CodeeloUI.Controls
         public CodeeloButton()
         {
             FlatStyle = FlatStyle.Flat;
+            DoubleBuffered = true;
             BackColor = Color.Transparent;
             FlatAppearance.BorderSize = 0;
             ForeColor = Color.WhiteSmoke;

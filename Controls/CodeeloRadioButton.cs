@@ -99,6 +99,7 @@ namespace CodeeloUI.Controls
             MinimumSize = new Size(0, 21);
             Padding = new Padding(10, 0, 0, 0);
             BackColor = Color.Transparent;
+            DoubleBuffered = true;
         }
 
         #region [ События ]
