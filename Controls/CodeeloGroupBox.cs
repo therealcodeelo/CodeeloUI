@@ -143,7 +143,7 @@ namespace CodeeloUI.Controls
                     borderPen.Alignment = PenAlignment.Inset;
                     graphics.DrawPath(borderPen, borderPath);
                     graphics.FillPath(new SolidBrush(FillColor), figurePath);
-                    graphics.FillRectangle(headerBrush, 0.8f, (HeaderHeight / 2f)+2, Width - 1.6f, HeaderHeight / 2f);
+                    graphics.FillRectangle(headerBrush, 0.8f, (HeaderHeight / 2f)+3, Width - 3f, HeaderHeight / 2f);
                     graphics.FillPath(headerBrush, CustomGraphicsPath.GetFigurePath(new RectangleF(0f, 0f, Width - 1F, HeaderHeight), borderRadius));
                 }
                 else
@@ -176,7 +176,7 @@ namespace CodeeloUI.Controls
                     break;
             }
             graphics.DrawString(Text, Font, new SolidBrush(ForeColor), positionX, positionY);
-         //   graphics.DrawString(Text, Font, new SolidBrush(Color.FromArgb(64,ForeColor)), positionX+1, positionY+1);
+            graphics.DrawString(Text, Font, new SolidBrush(Color.FromArgb(64,ForeColor)), positionX+1, positionY+1);
         }
 
         protected override void OnMouseEnter(EventArgs e)

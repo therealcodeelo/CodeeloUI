@@ -350,6 +350,7 @@ namespace CodeeloUI.Controls
             }
 
             graphics.DrawString(Text, Font, new SolidBrush(ForeColor), positionX, positionY);
+            graphics.DrawString(Text, Font, new SolidBrush(Color.FromArgb(64, ForeColor)), positionX + 1, positionY + 1);
         }
         protected override void OnMouseEnter(EventArgs e)
         {

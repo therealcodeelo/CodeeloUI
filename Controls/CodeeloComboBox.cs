@@ -21,9 +21,13 @@ namespace CodeeloUI.Controls
         private int _borderSize = 1;
         private readonly ComboBox _combobox;
         private readonly Button _button;
+        private Label lblText;
 
         public event EventHandler OnSelectedIndexChanged;
         public new event KeyPressEventHandler OnKeyPress;
+
+
+        private Timer _caretTimer;
         #endregion
 
         #region [ Свойства класса ]
@@ -32,7 +36,7 @@ namespace CodeeloUI.Controls
             get => _backColor;
             set
             {
-                _combobox.BackColor = _button.BackColor = _backColor = value;
+                lblText.BackColor = _button.BackColor = _backColor = value;
                 Invalidate();
             }
         }
@@ -60,7 +64,11 @@ namespace CodeeloUI.Controls
         public Color BorderColor
         {
             get => _borderColor;
-            set => BackColor = _borderColor = value;
+            set
+            {
+                BackColor = _borderColor = value;
+                Invalidate();
+            }
         }
 
         public int BorderSize
@@ -71,6 +79,7 @@ namespace CodeeloUI.Controls
                 _borderSize = value;
                 Padding = new Padding(_borderSize);
                 AdjustComboBoxDimensions();
+                Invalidate();
             }
         }
 
@@ -171,51 +180,78 @@ namespace CodeeloUI.Controls
         }
 
         #endregion
+        #region [ Скрытые свойства класса ]
+        [Browsable(false)]
+        public override Color BackColor { get; set; }
+        #endregion
         public CodeeloComboBox()
         {
             DoubleBuffered = true;
             _combobox = new ComboBox();
+            lblText = new Label();
             _button = new Button();
             SuspendLayout();
+
+            //ComboBox: Dropdown list
             _combobox.BackColor = _listBackColor;
-
-            _combobox.DrawMode = DrawMode.Normal;
-            _combobox.ItemHeight = 22;
-            _combobox.FlatStyle = FlatStyle.Flat;
-            _combobox.Dock = DockStyle.Left;
-            _combobox.Font = new Font(Font.Name, 10F);
+            _combobox.Font = new Font(this.Font.Name, 10F);
             _combobox.ForeColor = _listForeColor;
-
-
-            _combobox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
-            _combobox.Click += Surface_Click;
-            _combobox.MouseEnter += Surface_MouseEnter;
-            _combobox.MouseLeave += Surface_MouseLeave;
-            _combobox.DrawItem += DrawItemEventHandler;
-            _combobox.KeyPress += KeyPressEventHandler;
-
+            _combobox.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);//Default event
+            _combobox.TextChanged += new EventHandler(ComboBox_TextChanged);//Refresh text
+                                                                          //Button: Icon
             _button.Dock = DockStyle.Right;
             _button.FlatStyle = FlatStyle.Flat;
             _button.FlatAppearance.BorderSize = 0;
             _button.BackColor = _backColor;
-            _button.TabStop = false;
-            _button.Size = new Size(28, 26);
+            _button.Size = new Size(30, 30);
             _button.Cursor = Cursors.Hand;
-            _button.Click += Icon_Click;
-            _button.Paint += Icon_Paint;
+            _button.Click += new EventHandler(Icon_Click);//Open dropdown list
+            _button.Paint += new PaintEventHandler(Icon_Paint);//Draw icon
+                                                               //Label: Text
+            lblText.Dock = DockStyle.Fill;
+            lblText.AutoSize = false;
+            lblText.BackColor = _backColor;
+            lblText.TextAlign = ContentAlignment.MiddleLeft;
+            lblText.Padding = new Padding(8, 0, 0, 0);
+            lblText.Font = new Font(this.Font.Name, 10F);
+            //->Attach label events to user control event
+            lblText.Click += new EventHandler(Surface_Click);//Select combo box
+            lblText.MouseEnter += new EventHandler(Surface_MouseEnter);
+            lblText.MouseLeave += new EventHandler(Surface_MouseLeave);
+            lblText.GotFocus += LblText_GotFocus;
+            lblText.LostFocus += LblText_LostFocus;
 
-            Controls.Add(_button);
-            Controls.Add(_combobox);
-            MinimumSize = new Size(200, 30);
-            Size = new Size(200, 30);
-            ForeColor = Color.DimGray;
-            Padding = new Padding(_borderSize);
-            Font = new Font(Font.Name, 10F);
-            BackColor = _borderColor;
-            ResumeLayout();
+            //User Control
+            this.Controls.Add(lblText);//2
+            this.Controls.Add(_button);//1
+            this.Controls.Add(_combobox);//0
+            this.MinimumSize = new Size(200, 30);
+            this.Size = new Size(200, 30);
+            this.ForeColor = Color.DimGray;
+            this.Padding = new Padding(_borderSize);//Border Size
+            this.Font = new Font(this.Font.Name, 10F);
+            base.BackColor = _borderColor; //Border Color
+            this.ResumeLayout();
             AdjustComboBoxDimensions();
         }
 
+
+        private void LblText_GotFocus(object sender, EventArgs e)
+        {
+            ShowCaret();
+        }
+
+        private void LblText_LostFocus(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Test");
+            selected = false;
+            //_caretTimer.Stop();
+        }
+
+        private void ComboBox_TextChanged(object sender, EventArgs e)
+        {
+            lblText.Text = _combobox.Text;
+        }
 
         private void KeyPressEventHandler(object sender, KeyPressEventArgs e)
         {
@@ -225,31 +261,35 @@ namespace CodeeloUI.Controls
 
         private void DrawItemEventHandler(object sender, DrawItemEventArgs e)
         {
-            e.DrawBackground();
-            if (e.Index >= 0)
-            {
-                System.Drawing.Graphics g = e.Graphics;
-                Brush brush = ((e.State & DrawItemState.Selected) == DrawItemState.Selected) ?
-                               new SolidBrush(Color.FromArgb(255, 68, 71)) : new SolidBrush(e.BackColor);
-                Brush tBrush = new SolidBrush(e.ForeColor);
+            //e.DrawBackground();
+            //if (e.Index >= 0)
+            //{
+            //    System.Drawing.Graphics g = e.Graphics;
+            //    Brush brush = ((e.State & DrawItemState.Selected) == DrawItemState.Selected) ?
+            //                   new SolidBrush(Color.FromArgb(255, 68, 71)) : new SolidBrush(e.BackColor);
+            //    Brush tBrush = new SolidBrush(e.ForeColor);
 
-                g.FillRectangle(brush, e.Bounds);
-                if (_combobox.DataSource == null)
-                {
-                    e.Graphics.DrawString(Items[e.Index].ToString(), e.Font,
-                           tBrush, e.Bounds, StringFormat.GenericDefault);
-                }
+            //    g.FillRectangle(brush, e.Bounds);
+            //    if (_combobox.DataSource == null)
+            //    {
+            //        e.Graphics.DrawString(Items[e.Index].ToString(), e.Font,
+            //               tBrush, e.Bounds, StringFormat.GenericDefault);
+            //    }
 
-                brush.Dispose();
-                tBrush.Dispose();
-            }
-            e.DrawFocusRectangle();
+            //    brush.Dispose();
+            //    tBrush.Dispose();
+            //}
+            //e.DrawFocusRectangle();
         }
 
         private void AdjustComboBoxDimensions()
         {
-            _combobox.Width = Width - 2;
-            _button.Location = new Point(Width - 30, 2);
+            _combobox.Width = lblText.Width;
+            _combobox.Location = new Point()
+            {
+                X = this.Width - this.Padding.Right - _combobox.Width,
+                Y = lblText.Bottom - _combobox.Height
+            };
         }
         protected override void OnResize(EventArgs e)
         {
@@ -263,10 +303,35 @@ namespace CodeeloUI.Controls
         private void Surface_Click(object sender, EventArgs e)
         {
             OnClick(e);
+            lblText.Focus();
             _combobox.Select();
 
             if (_combobox.DropDownStyle == ComboBoxStyle.DropDownList)
                 _combobox.DroppedDown = true;
+        }
+        private void ShowCaret()
+        {
+            selected = true;
+            if(_caretTimer == null)
+            {
+                _caretTimer = new Timer();
+                _caretTimer.Interval = 700;
+                _caretTimer.Tick += Timer_Tick;
+                _caretTimer.Start();
+            }
+        }
+        private bool selected;
+        private bool ticked;
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            ticked = !ticked;
+            if (selected)
+            {
+                if(ticked)
+                    lblText.Text += '✟';
+                else
+                    lblText.Text = lblText.Text.Split('✟')[0];
+            } 
         }
 
         private void Icon_Paint(object sender, PaintEventArgs e)
@@ -296,6 +361,8 @@ namespace CodeeloUI.Controls
         {
             if (OnSelectedIndexChanged != null)
                 OnSelectedIndexChanged.Invoke(sender, e);
+            //Refresh text
+            lblText.Text = _combobox.Text;
         }
     }
 }

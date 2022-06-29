@@ -78,6 +78,12 @@
     <Compile Include="Components\CodeeloAnimator.Designer.cs">
       <DependentUpon>CodeeloAnimator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\CodeeloControlDrag.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CodeeloControlDrag.Designer.cs">
+      <DependentUpon>CodeeloControlDrag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\CodeeloFormDrag.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -189,6 +195,5 @@
   <ItemGroup>
     <None Include="Resources\unpin_20px.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

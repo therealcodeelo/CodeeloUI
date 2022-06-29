@@ -26,7 +26,7 @@ namespace CodeeloUI.Controls
 
         #region [ Свойства класса ]
         [Description("Цвет заливки фона"), Category("Настройки внешнего вида"), Browsable(true)]
-        public new Color BackColor
+        public Color FillColor
         {
             get => _backColor;
             set
@@ -67,12 +67,32 @@ namespace CodeeloUI.Controls
             }
         }
         #endregion
+
+        #region [ Скрытые свойства класса ]
+        [Browsable(false)]
+        public new Color CalendarForeColor {get;set;}
+        [Browsable(false)]
+        public new Color CalendarMonthBackground { get; set; }
+        [Browsable(false)]
+        public new Color CalendarTitleBackColor { get; set; }
+        [Browsable(false)]
+        public new Color CalendarTitleForeColor { get; set; }
+        [Browsable(false)]
+        public new Color CalendarTrailingForeColor { get; set; }
+        [Browsable(false)]
+        public new Font CalendarFont { get; set; }
+        [Browsable(false)]
+        public new bool ShowCheckBox { get; set; }
+        [Browsable(false)]
+        public new bool Checked { get; set; }
+        [Browsable(false)]
+        public new bool ShowUpDown { get; set; }
+        #endregion
         public CodeeloDateTimePicker()
         {
             SetStyle(ControlStyles.UserPaint, true);
             MinimumSize = new Size(0, 35);
             Font = new Font(Font.Name, 9.5F);
-            DoubleBuffered = true;
         }
         #region [ События ]
         protected override void OnDropDown(EventArgs eventargs)
@@ -99,8 +119,8 @@ namespace CodeeloUI.Controls
             using (SolidBrush textBrush = new SolidBrush(_foreColor))
             using (StringFormat textFormat = new StringFormat())
             {
-                RectangleF clientArea = new RectangleF(0, 0, Width - 0.5F, Height - 0.5F);
-                RectangleF iconArea = new RectangleF(clientArea.Width - CALENDAR_ICON_WIDTH, 0, CALENDAR_ICON_WIDTH, clientArea.Height);
+                var clientArea = new RectangleF(0, 0, Width - 0.5F, Height - 0.5F);
+                var iconArea = new RectangleF(clientArea.Width - CALENDAR_ICON_WIDTH, 0, CALENDAR_ICON_WIDTH, clientArea.Height);
                 penBorder.Alignment = PenAlignment.Inset;
                 textFormat.LineAlignment = StringAlignment.Center;
                 graphics.FillRectangle(skinBrush, clientArea);
