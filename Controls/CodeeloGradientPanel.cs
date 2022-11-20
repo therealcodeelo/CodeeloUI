@@ -49,6 +49,8 @@ namespace CodeeloUI.Controls
                 Invalidate();
             }
         }
+        [Description("Рисовать градиент"), Category("Свойства градиента")]
+        public bool DrawGradient { get; set; } = true;
         #endregion
 
         #region [ Скрытые свойства класса ]
@@ -85,16 +87,21 @@ namespace CodeeloUI.Controls
         public CodeeloGradientPanel()
         {
             DoubleBuffered = true;
+            SetStyle(ControlStyles.ResizeRedraw, true);
         }
 
         #region [ События ]
         protected override void OnPaint(PaintEventArgs e)
         {
-            var lgb = new LinearGradientBrush(ClientRectangle, _firstFillColor, _secondFillColor, _gradientDirection);
-            var graphics = e.Graphics;
-            graphics.FillRectangle(lgb, ClientRectangle);
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            SetStyle(ControlStyles.ResizeRedraw, true);
+            using (var lgb = new LinearGradientBrush(ClientRectangle, ColorFillFirst, ColorFillSecond, GradientDirection))
+            {
+                var graphics = e.Graphics;
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                if (DrawGradient)
+                    graphics.FillRectangle(lgb, ClientRectangle);
+                else
+                    graphics.FillRectangle(new SolidBrush(ColorFillFirst), ClientRectangle);
+            }
             base.OnPaint(e);
         }
         #endregion

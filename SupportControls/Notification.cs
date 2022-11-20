@@ -165,7 +165,16 @@ namespace CodeeloUI.SupportControls
             }
         }
         private void CloseButton_Click(object sender, EventArgs e) => Close();
-        private void Notification_MouseLeave(object sender, EventArgs e) => Opacity = _regularOpacity;
+        private void Notification_MouseLeave(object sender, EventArgs e) 
+        {
+            try
+            {
+                Opacity = _regularOpacity;
+            }
+            catch (Exception)
+            {
+            }
+        } 
         private void Notification_MouseEnter(object sender, EventArgs e) => Opacity = _hoveredOpacity;
     }
 }

@@ -5,6 +5,7 @@ using CodeeloUI.Animation.Effects.Font;
 using CodeeloUI.Animation.Effects.Opacity;
 using CodeeloUI.Animation.Effects.Transform;
 using CodeeloUI.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -222,6 +223,25 @@ namespace CodeeloUI.Components
                 Reverse,
                 LoopsCount);
 
+            _cancellationTokens.Add(cancellationToken);
+        }
+        public void PlayAnimationAndDoAction(Action doSomething)
+        {
+            if (SourceControl == null)
+                return;
+
+            CancelAnimation();
+            SelectEffect();
+            var cancellationToken = SourceControl.Animate(
+                _animationEffect,
+                _easingFunction,
+                ValueTo,
+                Duration * 1000,
+                Delay * 1000,
+                doSomething,
+                Reverse,
+                LoopsCount);
+            
             _cancellationTokens.Add(cancellationToken);
         }
         private void SelectEffect()
