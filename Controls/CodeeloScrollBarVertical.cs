@@ -209,10 +209,10 @@ namespace CodeeloUI.Controls
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            using (var areaPath = CustomGraphicsPath.GetFigurePath(new Rectangle(0, Width, Width, AreaHeight)))
-            using (var sliderPath = CustomGraphicsPath.GetFigurePath(new Rectangle(4, Width + 4 + _sliderTop, Width - 8, GetSliderHeight())))
-            using (var topTriangle = CustomGraphicsPath.GetBottomSideTriangle(Width - 4, (Width - (Width - 4)) / 2, Width - 5 - (float)((Width - 4) * Math.Sqrt(3) / 2)))
-            using (var bottomTriangle = CustomGraphicsPath.GetTopSideTriangle(Width - 4, (Width - (Width - 4)) / 2, AreaHeight + Width + 5))
+            using (var areaPath = GraphicsUtils.GetFigurePath(new Rectangle(0, Width, Width, AreaHeight)))
+            using (var sliderPath = GraphicsUtils.GetFigurePath(new Rectangle(4, Width + 4 + _sliderTop, Width - 8, GetSliderHeight())))
+            using (var topTriangle = GraphicsUtils.GetBottomSideTriangle(Width - 4, (Width - (Width - 4)) / 2, Width - 5 - (float)((Width - 4) * Math.Sqrt(3) / 2)))
+            using (var bottomTriangle = GraphicsUtils.GetTopSideTriangle(Width - 4, (Width - (Width - 4)) / 2, AreaHeight + Width + 5))
             using (var areaBrush = new LinearGradientBrush(ClientRectangle, AreaFirstFillColor, AreaSecondFillColor, AreaGradientDirection)) 
             using (var sliderBrush = new LinearGradientBrush(ClientRectangle, SliderFirstFillColor, SliderSecondFillColor, SliderGradientDirection))
             {

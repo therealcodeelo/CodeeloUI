@@ -75,13 +75,13 @@ namespace CodeeloUI.Controls
             {
                 if (_isVertical)
                 {
-                    e.Graphics.FillPath(firstBrush, CustomGraphicsPath.GetTopSeparatorPart(firstRect));
-                    e.Graphics.FillPath(secondBrush, CustomGraphicsPath.GetBottomSeparatorPart(secondRect));
+                    e.Graphics.FillPath(firstBrush, GraphicsUtils.GetTopSeparatorPart(firstRect));
+                    e.Graphics.FillPath(secondBrush, GraphicsUtils.GetBottomSeparatorPart(secondRect));
                 }
                 else
                 {
-                    e.Graphics.FillPath(firstBrush, CustomGraphicsPath.GetRightSeparatorPart(firstRect));
-                    e.Graphics.FillPath(secondBrush, CustomGraphicsPath.GetLeftSeparatorPart(secondRect));
+                    e.Graphics.FillPath(firstBrush, GraphicsUtils.GetRightSeparatorPart(firstRect));
+                    e.Graphics.FillPath(secondBrush, GraphicsUtils.GetLeftSeparatorPart(secondRect));
                 }
             }
         }

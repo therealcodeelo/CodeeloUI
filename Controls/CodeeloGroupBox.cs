@@ -144,18 +144,18 @@ namespace CodeeloUI.Controls
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
             using (var borderPen = new Pen(BorderColor, borderWidth))
             using (var headerBrush = new SolidBrush(BorderColor))
-            using (var borderPath = CustomGraphicsPath.GetFigurePath(Rectangle.Inflate(ClientRectangle, -2, -2), borderRadius)) 
+            using (var borderPath = GraphicsUtils.GetFigurePath(Rectangle.Inflate(ClientRectangle, -2, -2), borderRadius)) 
             {
                 if (borderRadius > 2)
                 {
                     borderPen.Alignment = PenAlignment.Inset;
                     graphics.FillPath(new SolidBrush(FillColor), 
-                        CustomGraphicsPath.GetFigurePath(new RectangleF(borderWidth, HeaderHeight / 2, 
+                        GraphicsUtils.GetFigurePath(new RectangleF(borderWidth, HeaderHeight / 2, 
                         Width - 1F - borderWidth * 2, Height - (HeaderHeight + 2f) / 2f), borderRadius));
                     graphics.DrawPath(borderPen, borderPath);
                    
                     graphics.FillRectangle(headerBrush, 0.7f, (HeaderHeight / 2f) + 3, Width - 1.7f, HeaderHeight / 2f);
-                    graphics.FillPath(headerBrush, CustomGraphicsPath.GetFigurePath(new RectangleF(0f, 0f, Width - 1F, HeaderHeight), borderRadius));
+                    graphics.FillPath(headerBrush, GraphicsUtils.GetFigurePath(new RectangleF(0f, 0f, Width - 1F, HeaderHeight), borderRadius));
                 }
                 else
                 {                   

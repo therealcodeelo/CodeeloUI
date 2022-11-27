@@ -225,8 +225,8 @@ namespace CodeeloUI.Controls
             this.Controls.Add(lblText);//2
             this.Controls.Add(_button);//1
             this.Controls.Add(_combobox);//0
-            this.MinimumSize = new Size(200, 30);
-            this.Size = new Size(200, 30);
+
+         
             this.ForeColor = Color.DimGray;
             this.Padding = new Padding(_borderSize);//Border Size
             this.Font = new Font(this.Font.Name, 10F);
@@ -363,6 +363,19 @@ namespace CodeeloUI.Controls
                 OnSelectedIndexChanged.Invoke(sender, e);
             //Refresh text
             lblText.Text = _combobox.Text;
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // CodeeloComboBox
+            // 
+            this.MinimumSize = new System.Drawing.Size(200, 30);
+            this.Name = "CodeeloComboBox";
+            this.Size = new System.Drawing.Size(200, 30);
+            this.ResumeLayout(false);
+
         }
     }
 }

@@ -300,8 +300,8 @@ namespace CodeeloUI.Controls
             {
                 if (_borderRadius > 2)
                 {
-                    using (var borderPath = CustomGraphicsPath.GetFigurePath(Rectangle.Inflate(ClientRectangle, -2, -2), _borderRadius))
-                    using (var path = CustomGraphicsPath.GetFigurePath(Rectangle.Inflate(ClientRectangle, -1, -1), _borderRadius)) 
+                    using (var borderPath = GraphicsUtils.GetFigurePath(Rectangle.Inflate(ClientRectangle, -2, -2), _borderRadius))
+                    using (var path = GraphicsUtils.GetFigurePath(Rectangle.Inflate(ClientRectangle, -1, -1), _borderRadius)) 
                     {
                         if (_useGradient)
                             graphics.FillPath(gradientBrush, path);

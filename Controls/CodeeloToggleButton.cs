@@ -113,9 +113,9 @@ namespace CodeeloUI.Controls
                 if (_drawCircle)
                 {
                     if (_transparentBackColor)
-                        graphics.DrawPath(pen, CustomGraphicsPath.GetFigurePath(this));
+                        graphics.DrawPath(pen, GraphicsUtils.GetFigurePath(this));
                     else
-                        graphics.FillPath(brush, CustomGraphicsPath.GetFigurePath(this));
+                        graphics.FillPath(brush, GraphicsUtils.GetFigurePath(this));
 
                     graphics.FillEllipse(toggleBrush, toggleRect);
                 }

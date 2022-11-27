@@ -66,6 +66,16 @@
     <Compile Include="Animation\Effects\Transform\TopAnchoredHeightEffect.cs" />
     <Compile Include="Animation\Effects\Transform\VerticalFoldEffect.cs" />
     <Compile Include="Animation\Effects\Transform\YLocationEffect.cs" />
+    <Compile Include="ToolTip\CodeeloBorder.cs" />
+    <Compile Include="Components\CodeeloToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CodeeloToolTip.Designer.cs">
+      <DependentUpon>CodeeloToolTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\CodeeloBorderDirection.cs" />
+    <Compile Include="ToolTip\CodeeloLayeredWindow.cs" />
+    <Compile Include="ToolTip\CodeeloTipStyle.cs" />
     <Compile Include="Components\CodeeloAnimateForm.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -164,11 +174,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Graphics\CustomGraphicsPath.cs" />
+    <Compile Include="Graphics\GraphicsUtils.cs" />
     <Compile Include="Enums\TextPosition.cs" />
     <Compile Include="Animation\Effects\Transform\XLocationEffect.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\CodeeloComboBox.resx">
+      <DependentUpon>CodeeloComboBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CodeeloTextBox.resx">
       <DependentUpon>CodeeloTextBox.cs</DependentUpon>
     </EmbeddedResource>

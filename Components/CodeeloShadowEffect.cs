@@ -136,7 +136,7 @@ namespace CodeeloUI.Components
                     var rect2 = new RectangleF(rect1.X, rect1.Y, rect1.Width - 1f, rect1.Height - 1f);
 
                     graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                    graphics.FillPath(brush, CustomGraphicsPath.GetFigurePath(rect2, BorderRadius < 2 ? 1F : BorderRadius / 2F));
+                    graphics.FillPath(brush, GraphicsUtils.GetFigurePath(rect2, BorderRadius < 2 ? 1F : BorderRadius / 2F));
 
 
                     _shadowImage = new Bitmap(rectangle.Width, rectangle.Height);
