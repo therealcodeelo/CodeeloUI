@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Drawing.Design;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using CodeeloUI.Graphics;
 
 namespace CodeeloUI.Controls
 {
@@ -74,7 +73,7 @@ namespace CodeeloUI.Controls
             set
             {
                 _usePasswordChar = value;
-                if(!_usePasswordChar)
+                if(!_usePlaceholder)
                     textBox.UseSystemPasswordChar = value;
             }
         }
@@ -113,7 +112,8 @@ namespace CodeeloUI.Controls
         {
             get
             {
-                if (_usePlaceholder) return string.Empty;
+                if (_usePlaceholder) 
+                    return string.Empty;
                 return textBox.Text;
             }
             set
@@ -180,21 +180,6 @@ namespace CodeeloUI.Controls
                     textBox.UseSystemPasswordChar = true;
             }
         }
-        private void SetTextBoxRoundedRegion()
-        {
-            GraphicsPath textPath;
-            if (Multiline)
-            {
-                textPath = CustomGraphicsPath.GetFigurePath(textBox.ClientRectangle, -1 * _borderSize);
-                textBox.Region = new Region(textPath);
-            }
-            else
-            {
-                textPath = CustomGraphicsPath.GetFigurePath(textBox.ClientRectangle, _borderSize * 2);
-                textBox.Region = new Region(textPath);
-            }
-            textPath.Dispose();
-        }
         private void UpdateControlHeight()
         {
             if (textBox.Multiline)
@@ -239,16 +224,9 @@ namespace CodeeloUI.Controls
             base.OnLoad(e);
             UpdateControlHeight();
         }
-        private void textBox_TextChanged(object sender, EventArgs e)
-        {
-            if (TextChanged != null)
-                TextChanged.Invoke(sender, e);
-        }
-
+        private void textBox_TextChanged(object sender, EventArgs e) => TextChanged?.Invoke(sender, e);
         private void textBox_Click(object sender, EventArgs e) => OnClick(e);
-
         private void textBox_MouseLeave(object sender, EventArgs e) => OnMouseLeave(e);
-
         private void textBox_MouseEnter(object sender, EventArgs e) => OnMouseEnter(e);
         private void textBox_KeyPress(object sender, KeyPressEventArgs e) => OnKeyPress(e);
 
