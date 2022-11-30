@@ -8,7 +8,7 @@ using CodeeloUI.Graphics;
 
 namespace CodeeloUI.Controls
 {
-    [ToolboxBitmap(typeof(Button))]
+    [ToolboxBitmap(typeof(CodeeloButton), "Icons.CodeeloButton.bmp")]
     [ToolboxItem(true)]
     [Description("Настраиваемая кнопка")]
     public sealed class CodeeloButton : Button

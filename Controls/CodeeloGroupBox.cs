@@ -8,7 +8,7 @@ using CodeeloUI.Graphics;
 
 namespace CodeeloUI.Controls
 {
-    [ToolboxBitmap(typeof(GroupBox))]
+    [ToolboxBitmap(typeof(CodeeloGroupBox), "Icons.CodeeloGroupBox.bmp")]
     [ToolboxItem(true)]
     [Description("Элемент для группировки объектов")]
     public sealed class CodeeloGroupBox : GroupBox

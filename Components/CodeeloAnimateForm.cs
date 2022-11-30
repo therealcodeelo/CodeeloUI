@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using CodeeloUI.Graphics;
 
 namespace CodeeloUI.Components
 {
+    [ToolboxBitmap(typeof(CodeeloAnimateForm), @"Icons.CodeeloAnimateForm.bmp")]
     public partial class CodeeloAnimateForm : Component
     {
         #region [ Поля класса ]

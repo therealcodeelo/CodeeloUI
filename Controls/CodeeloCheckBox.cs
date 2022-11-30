@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CodeeloUI.Controls
 {
-    [ToolboxBitmap(typeof(CheckBox))]
+    [ToolboxBitmap(typeof(CodeeloCheckBox), "Icons.CodeeloCheckBox.bmp")]
     [ToolboxItem(true)]
     [Description("Элемент для выбора определенных вариантов")]
     public sealed class CodeeloCheckBox : CheckBox

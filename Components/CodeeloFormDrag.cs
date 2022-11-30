@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace CodeeloUI.Components
 {
+    [ToolboxBitmap(typeof(CodeeloFormDrag), "Icons.CodeeloFormDrag.bmp")]
     public partial class CodeeloFormDrag : Component
     {
         [DllImport("user32.dll")]

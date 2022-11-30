@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace CodeeloUI.Controls
 {
-    [ToolboxBitmap(typeof(RadioButton))]
+    [ToolboxBitmap(typeof(CodeeloPictureBox), "Icons.CodeeloRadioButton.bmp")]
     [ToolboxItem(true)]
     [Description("Элемент для выбора одного варианта в определенном контейнере")]
     public sealed class CodeeloRadioButton : RadioButton

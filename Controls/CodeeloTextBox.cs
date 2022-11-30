@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace CodeeloUI.Controls
 {
-    [ToolboxBitmap(typeof(TextBox))]
+    [ToolboxBitmap(typeof(CodeeloTextBox), "Icons.CodeeloTextBox.bmp")]
     [ToolboxItem(true)]
     [Description("Текстовое поле")]
     public partial class CodeeloTextBox : UserControl

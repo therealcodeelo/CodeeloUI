@@ -5,6 +5,7 @@ using CodeeloUI.SupportControls;
 
 namespace CodeeloUI.Components
 {
+    [ToolboxBitmap(typeof(CodeeloNotification), "Icons.CodeeloNotification.bmp")]
     public partial class CodeeloNotification : Component
     {
         #region [ Поля класса ]

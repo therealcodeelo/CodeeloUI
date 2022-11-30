@@ -7,7 +7,7 @@ using CodeeloUI.Properties;
 
 namespace CodeeloUI.Controls
 {
-    [ToolboxBitmap(typeof(DateTimePicker))]
+    [ToolboxBitmap(typeof(CodeeloDateTimePicker), "Icons.CodeeloCalendar.bmp")]
     [ToolboxItem(true)]
     [Description("Элемент для отображения даты")]
     public sealed class CodeeloDateTimePicker : DateTimePicker

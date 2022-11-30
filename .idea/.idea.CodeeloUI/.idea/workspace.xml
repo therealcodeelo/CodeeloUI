@@ -4,6 +4,26 @@
     <list default="true" id="675d853c-eaf1-4999-a355-76d417485115" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CodeeloUI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CodeeloUI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CodeeloUI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CodeeloUI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/CodeeloAnimateForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Components/CodeeloAnimateForm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/CodeeloAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Components/CodeeloAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/CodeeloControlDrag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Components/CodeeloControlDrag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/CodeeloFormDrag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Components/CodeeloFormDrag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/CodeeloNotification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Components/CodeeloNotification.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/CodeeloShadowEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Components/CodeeloShadowEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/CodeeloToolTip.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Components/CodeeloToolTip.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/CodeeloToolTip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Components/CodeeloToolTip.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloCheckBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloCheckBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloCircularProgressBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloCircularProgressBar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloComboBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloComboBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloDateTimePicker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloDateTimePicker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloGradientPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloGradientPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloGroupBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloGroupBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloPictureBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloPictureBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloRadioButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloRadioButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloSeparator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloSeparator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloTextBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloTextBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controls/CodeeloToggleButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controls/CodeeloToggleButton.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +64,7 @@
       <workItem from="1655306371130" duration="47000" />
       <workItem from="1655549708743" duration="248000" />
       <workItem from="1655550184693" duration="105000" />
+      <workItem from="1669795125057" duration="46000" />
     </task>
     <servers />
   </component>

@@ -1,14 +1,14 @@
-﻿using System.ComponentModel;
+﻿using CodeeloUI.Graphics;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using CodeeloUI.Graphics;
 
 namespace CodeeloUI.Components
 {
+    [ToolboxBitmap(typeof(CodeeloShadowEffect), "Icons.CodeeloShadow.bmp")]
     public partial class CodeeloShadowEffect : Component
     {
-
         #region [ Поля класса ]
         private Control _sourceControl;
         private Color _shadowColor = Color.Black;

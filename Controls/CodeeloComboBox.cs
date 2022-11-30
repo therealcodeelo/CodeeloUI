@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace CodeeloUI.Controls
 {
-    [ToolboxBitmap(typeof(ComboBox))]
+    [ToolboxBitmap(typeof(CodeeloComboBox), "Icons.CodeeloComboBox.bmp")]
     [ToolboxItem(true)]
     [Description("Элемент отображения выпадающих списков")]
     public sealed class CodeeloComboBox : UserControl

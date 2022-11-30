@@ -208,5 +208,30 @@
   <ItemGroup>
     <None Include="Resources\unpin_20px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Components\Icons\CodeeloAnimator.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloCheckBox.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloCircularProgressBar.bmp" />
+    <EmbeddedResource Include="Components\Icons\CodeeloNotification.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloRadioButton.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloSeparator.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloToggleButton.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Components\Icons\CodeeloAnimateForm.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloButton.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloCalendar.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloComboBox.bmp" />
+    <EmbeddedResource Include="Components\Icons\CodeeloControlDrag.bmp" />
+    <EmbeddedResource Include="Components\Icons\CodeeloFormDrag.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloGradientPanel.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloGroupBox.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloPictureBox.bmp" />
+    <EmbeddedResource Include="Components\Icons\CodeeloShadow.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloTextBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Components\Icons\CodeeloToolTip.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

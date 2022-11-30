@@ -1,4 +1,4 @@
-﻿namespace CodeeloUI
+﻿namespace CodeeloUI.Components
 {
     partial class CodeeloToolTip
     {

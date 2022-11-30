@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace CodeeloUI.Controls
 {
-    [ToolboxBitmap(typeof(Panel))]
+    [ToolboxBitmap(typeof(CodeeloGradientPanel), "Icons.CodeeloGradientPanel.bmp")]
     [ToolboxItem(true)]
     [Description("Панель с возможностью градиентной заливки фона")]
     public class CodeeloGradientPanel : Panel

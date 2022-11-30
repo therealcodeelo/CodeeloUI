@@ -1,5 +1,4 @@
-﻿using CodeeloUI.Graphics;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -7,22 +6,25 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using CodeeloUI.Graphics;
 
-namespace CodeeloUI
+namespace CodeeloUI.Components
 {
+    [ToolboxBitmap(typeof(CodeeloToolTip), "Icons.CodeeloToolTip.bmp")]
     public partial class CodeeloToolTip : Component
     {
         #region [ Свойства класса ]
-        static readonly Font DefaultFont = new Font(SystemFonts.MessageBoxFont.FontFamily, 12);
-        static readonly StringFormat DefStringFormat = StringFormat.GenericTypographic;
+        private readonly Font DefaultFont = new Font(SystemFonts.MessageBoxFont.FontFamily, 12);
+        private readonly StringFormat DefStringFormat = StringFormat.GenericTypographic;
 
-        public static CodeeloTipStyle DefaultStyle { get; set; } = CodeeloTipStyle.Gray;
-        public static CodeeloTipStyle OkStyle { get; set; } = CodeeloTipStyle.Green;
-        public static CodeeloTipStyle WarningStyle { get; set; } = CodeeloTipStyle.Orange;
-        public static CodeeloTipStyle ErrorStyle { get; set; } = CodeeloTipStyle.Red;
-        public static int Fade { get; set; } = 100;
-        public static bool Floating { get; set; } = true;
-        public static int Delay { get; set; } = 600;
+        private CodeeloTipStyle DefaultStyle { get; set; } = CodeeloTipStyle.Gray;
+        private CodeeloTipStyle OkStyle { get; set; } = CodeeloTipStyle.Green;
+        private CodeeloTipStyle WarningStyle { get; set; } = CodeeloTipStyle.Orange;
+        private CodeeloTipStyle ErrorStyle { get; set; } = CodeeloTipStyle.Red;
+        public Bitmap Bitmap24 { get; set; }
+        public int Fade { get; set; } = 100;
+        public bool Floating { get; set; } = true;
+        public int Delay { get; set; } = 600;
         #endregion
 
         #region [ Win32 API ]
@@ -52,7 +54,7 @@ namespace CodeeloUI
         }
 
         #region [ Приватные методы ]
-        private static void FadeEffect(CodeeloLayeredWindow window, bool fadeIn)
+        private void FadeEffect(CodeeloLayeredWindow window, bool fadeIn)
         {
             byte target = fadeIn ? byte.MaxValue : byte.MinValue;
             const int Updateinterval = 10;
@@ -71,7 +73,7 @@ namespace CodeeloUI
             window.Alpha = target;
         }
 
-        private static Point DetemineActive()
+        private Point DetemineActive()
         {
             var point = Control.MousePosition;
 
@@ -90,7 +92,7 @@ namespace CodeeloUI
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        private static Bitmap CreateTipImage(string text, CodeeloTipStyle style, out Rectangle contentBounds)
+        private Bitmap CreateTipImage(string text, CodeeloTipStyle style, out Rectangle contentBounds)
         {
             var size = Size.Empty;
             var iconBounds = Rectangle.Empty;
@@ -175,7 +177,7 @@ namespace CodeeloUI
                 textBrush?.Dispose();
             }
         }
-        private static Point GetLocation(Rectangle contentBounds, Point basePoint, bool centerByBasePoint, out bool floatDown)
+        private Point GetLocation(Rectangle contentBounds, Point basePoint, bool centerByBasePoint, out bool floatDown)
         {
             var screen = Screen.FromPoint(basePoint).Bounds;
 
@@ -218,7 +220,7 @@ namespace CodeeloUI
             return p;
         }
 
-        private static Point GetCenterPosition(Component controlOrItem)
+        private Point GetCenterPosition(Component controlOrItem)
         {
             if (controlOrItem is Control c)
             {
@@ -237,7 +239,7 @@ namespace CodeeloUI
             throw new ArgumentException("Параметр может быть только Control или ToolStripItem!");
         }
 
-        private static bool IsContainerLike(Component controlOrItem)
+        private bool IsContainerLike(Component controlOrItem)
         {
             if (controlOrItem is ContainerControl
                 || controlOrItem is GroupBox
@@ -263,22 +265,52 @@ namespace CodeeloUI
 
             return false;
         }
+        private void layer_Showing(object sender, EventArgs e)
+        {
+            var layer = (CodeeloLayeredWindow)sender;
+            var args = layer.Tag as object[];
+            var delay = (int)args[0];
+            var floating = (bool)args[1];
+            var floatDown = (bool)args[2];
+
+            if (floating)
+            {
+                new Thread(arg =>
+                {
+                    int adj = floatDown ? 1 : -1;
+
+                    while (layer.Visible)
+                    {
+                        layer.Top += adj;
+                        Thread.Sleep(30);
+                    }
+                })
+                { IsBackground = true, Name = "T_Floating" }.Start();
+            }
+
+            FadeEffect(layer, true);
+            Thread.Sleep(delay < 0 ? 0 : delay);
+            layer.Close();
+        }
+
+        private void layer_Closing(object sender, CancelEventArgs e) =>
+            FadeEffect((CodeeloLayeredWindow)sender, false);
         #endregion
 
         #region [ Публичные методы ]
-        public static void ShowOk(Component controlOrItem, string text = null, int delay = -1, bool? floating = null, bool? centerInControl = null) =>
+        public void ShowOk(Component controlOrItem, string text = null, int delay = -1, bool? floating = null, bool? centerInControl = null) =>
             Show(controlOrItem, text, OkStyle ?? CodeeloTipStyle.Green, delay, floating, centerInControl);
-        public static void ShowOk(string text = null, int delay = -1, bool? floating = null, Point? point = null, bool centerByPoint = false) =>
+        public void ShowOk(string text = null, int delay = -1, bool? floating = null, Point? point = null, bool centerByPoint = false) =>
             Show(text, OkStyle ?? CodeeloTipStyle.Green, delay, floating, point, centerByPoint);
-        public static void ShowWarning(Component controlOrItem, string text = null, int delay = 1000, bool? floating = false, bool? centerInControl = null) =>
+        public void ShowWarning(Component controlOrItem, string text = null, int delay = 1000, bool? floating = false, bool? centerInControl = null) =>
             Show(controlOrItem, text, WarningStyle ?? CodeeloTipStyle.Orange, delay, floating, centerInControl);
-        public static void ShowWarning(string text = null, int delay = 1000, bool? floating = false, Point? point = null, bool centerByPoint = false) =>
+        public void ShowWarning(string text = null, int delay = 1000, bool? floating = false, Point? point = null, bool centerByPoint = false) =>
             Show(text, WarningStyle ?? CodeeloTipStyle.Orange, delay, floating, point, centerByPoint);
-        public static void ShowError(Component controlOrItem, string text = null, int delay = 1000, bool? floating = false, bool? centerInControl = null) =>
+        public void ShowError(Component controlOrItem, string text = null, int delay = 1000, bool? floating = false, bool? centerInControl = null) =>
             Show(controlOrItem, text, ErrorStyle ?? CodeeloTipStyle.Red, delay, floating, centerInControl);
-        public static void ShowError(string text = null, int delay = 1000, bool? floating = false, Point? point = null, bool centerByPoint = false) =>
+        public void ShowError(string text = null, int delay = 1000, bool? floating = false, Point? point = null, bool centerByPoint = false) =>
             Show(text, ErrorStyle ?? CodeeloTipStyle.Red, delay, floating, point, centerByPoint);
-        public static void Show(Component controlOrItem, string text, CodeeloTipStyle style = null, int delay = -1, bool? floating = null, bool? centerInControl = null)
+        public void Show(Component controlOrItem, string text, CodeeloTipStyle style = null, int delay = -1, bool? floating = null, bool? centerInControl = null)
         {
             if (controlOrItem == null)
             {
@@ -286,7 +318,7 @@ namespace CodeeloUI
             }
             Show(text, style, delay, floating, GetCenterPosition(controlOrItem), centerInControl ?? IsContainerLike(controlOrItem));
         }
-        public static void Show(string text, CodeeloTipStyle style = null, int delay = -1, bool? floating = null, Point? point = null, bool centerByPoint = false)
+        public void Show(string text, CodeeloTipStyle style = null, int delay = -1, bool? floating = null, Point? point = null, bool centerByPoint = false)
         {
             var basePoint = point ?? DetemineActive();
 
@@ -319,37 +351,6 @@ namespace CodeeloUI
             })
             { IsBackground = true, Name = "T_Showing" }.Start();
         }
-
-        static void layer_Showing(object sender, EventArgs e)
-        {
-            var layer = (CodeeloLayeredWindow)sender;
-            var args = layer.Tag as object[];
-            var delay = (int)args[0];
-            var floating = (bool)args[1];
-            var floatDown = (bool)args[2];
-
-            if (floating)
-            {
-                new Thread(arg =>
-                {
-                    int adj = floatDown ? 1 : -1;
-
-                    while (layer.Visible)
-                    {
-                        layer.Top += adj;
-                        Thread.Sleep(30);
-                    }
-                })
-                { IsBackground = true, Name = "T_Floating" }.Start();
-            }
-
-            FadeEffect(layer, true);
-            Thread.Sleep(delay < 0 ? 0 : delay);
-            layer.Close();
-        }
-
-        static void layer_Closing(object sender, CancelEventArgs e) =>
-            FadeEffect((CodeeloLayeredWindow)sender, false);
         #endregion
     }
 }

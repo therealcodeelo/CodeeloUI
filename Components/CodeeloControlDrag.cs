@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace CodeeloUI.Components
 {
+    [ToolboxBitmap(typeof(CodeeloControlDrag), "Icons.CodeeloControlDrag.bmp")]
     public partial class CodeeloControlDrag : Component
     {
         private Control _sourceControl;

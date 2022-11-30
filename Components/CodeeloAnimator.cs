@@ -8,10 +8,12 @@ using CodeeloUI.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CodeeloUI.Components
 {
+    [ToolboxBitmap(typeof(CodeeloAnimator), "Icons.CodeeloAnimator.bmp")]
     public partial class CodeeloAnimator : Component
     {
         #region [ Поля класса ]

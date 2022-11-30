@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CodeeloUI.Controls
 {
-    [ToolboxBitmap(typeof(PictureBox))]
+    [ToolboxBitmap(typeof(CodeeloPictureBox), "Icons.CodeeloPictureBox.bmp")]
     [ToolboxItem(true)]
     [Description("Элемент для отображения изображений")]
     public class CodeeloPictureBox : PictureBox

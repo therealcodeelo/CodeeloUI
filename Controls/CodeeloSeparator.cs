@@ -7,6 +7,7 @@ using CodeeloUI.Graphics;
 
 namespace CodeeloUI.Controls
 {
+    [ToolboxBitmap(typeof(CodeeloSeparator), "Icons.CodeeloSeparator.bmp")]
     public class CodeeloSeparator : Control
     {
         #region [ Поля класса ]

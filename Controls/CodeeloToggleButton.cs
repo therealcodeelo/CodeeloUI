@@ -6,7 +6,7 @@ using CodeeloUI.Graphics;
 
 namespace CodeeloUI.Controls
 {
-    [ToolboxBitmap(typeof(CheckBox))]
+    [ToolboxBitmap(typeof(CodeeloToggleButton), "Icons.CodeeloToggleButton.bmp")]
     [ToolboxItem(true)]
     [Description("Элемент для переключения между двумя вариантами")]
     public sealed class CodeeloToggleButton : CheckBox
