@@ -25,17 +25,8 @@ namespace CodeeloUI.Controls
         #endregion
 
         #region [ Свойства класса ]
-        [Description("Цвет текста"),Category("Внешний вид")]
-        public override Color ForeColor 
-        { 
-            get => base.ForeColor; 
-            set 
-            {
-                if (ForeColorOnSelect != value)
-                    _currentForeColor = value;
-                base.ForeColor = value; 
-            } 
-        }
+        [Description("Цвет текста элемента при его выборе"), Category("Внешний вид")]
+        public Color TextForeColor { get; set; } = Color.DimGray;
         [Description("Высота заголовка"),Category("Настройки внешнего вида")]
         public int HeaderHeight
         {
@@ -78,9 +69,9 @@ namespace CodeeloUI.Controls
             }
         }
         [Description("Цвет границ элемента при его выборе"), Category("Настройки внешнего вида")]
-        public Color BorderColorOnSelect { get; set; }
-        [Description("Цвет текса элемента при его выборе"),Category("Внешний вид")]
-        public Color ForeColorOnSelect { get; set; }
+        public Color BorderColorOnSelect { get; set; } = Color.DodgerBlue;
+        [Description("Цвет текста элемента при его выборе"), Category("Внешний вид")]
+        public Color ForeColorOnSelect { get; set; } = Color.White;
         [Description("Толщина границ элемента"), Category("Настройки внешнего вида")]
         public int BorderWidth
         {
@@ -117,11 +108,9 @@ namespace CodeeloUI.Controls
         {
             Font = new Font(FontFamily.GenericSerif, 14, FontStyle.Regular);
 
-            _currentForeColor = ForeColor = Color.DimGray;
+            _currentForeColor = TextForeColor;
             _currentBorderColor = _borderColor = Color.PowderBlue;
             _fillColor = Color.MintCream;
-            BorderColorOnSelect = Color.DodgerBlue;
-            ForeColorOnSelect = Color.White;
             BackColor = Color.Transparent;
 
             _textPosition = TextPosition.Left;
@@ -188,8 +177,8 @@ namespace CodeeloUI.Controls
                     positionX = 5F;
                     break;
             }
-            graphics.DrawString(Text, Font, new SolidBrush(ForeColor), positionX, positionY);
-            graphics.DrawString(Text, Font, new SolidBrush(Color.FromArgb(64,ForeColor)), positionX+1, positionY+1);
+            graphics.DrawString(Text, Font, new SolidBrush(TextForeColor), positionX, positionY);
+            graphics.DrawString(Text, Font, new SolidBrush(Color.FromArgb(64, TextForeColor)), positionX+1, positionY+1);
         }
 
         protected override void OnMouseEnter(EventArgs e)
@@ -206,13 +195,13 @@ namespace CodeeloUI.Controls
         {
             base.OnEnter(e);
             BorderColor = BorderColorOnSelect;
-            ForeColor = ForeColorOnSelect;
+            TextForeColor = ForeColorOnSelect;
         }
         protected override void OnLeave(EventArgs e)
         {
             base.OnLeave(e);
             BorderColor = _currentBorderColor;
-            ForeColor = _currentForeColor;
+            TextForeColor = _currentForeColor;
         }
         #endregion
 
@@ -222,12 +211,12 @@ namespace CodeeloUI.Controls
             if (ClientRectangle.Contains(PointToClient(MousePosition)))
             {
                 BorderColor = BorderColorOnSelect;
-                ForeColor = ForeColorOnSelect;
+                TextForeColor = ForeColorOnSelect;
             }
             else
             {
                 BorderColor = _currentBorderColor;
-                ForeColor = _currentForeColor;
+                TextForeColor = _currentForeColor;
             }
         }
         #endregion
