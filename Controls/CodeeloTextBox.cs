@@ -10,6 +10,7 @@ namespace CodeeloUI.Controls
     [ToolboxBitmap(typeof(CodeeloTextBox), "Icons.CodeeloTextBox.bmp")]
     [ToolboxItem(true)]
     [Description("Текстовое поле")]
+    [DefaultEvent("TextWasChanged")]
     public partial class CodeeloTextBox : UserControl
     {
         #region [ Поля класса ]
@@ -26,7 +27,7 @@ namespace CodeeloUI.Controls
 
         private string _placeholderText = string.Empty;
 
-        public new event EventHandler TextChanged;
+        public event EventHandler TextWasChanged;
         #endregion
 
         #region [ Свойства класса ]
@@ -224,7 +225,7 @@ namespace CodeeloUI.Controls
             base.OnLoad(e);
             UpdateControlHeight();
         }
-        private void textBox_TextChanged(object sender, EventArgs e) => TextChanged?.Invoke(sender, e);
+        private void textBox_TextChanged(object sender, EventArgs e) => TextWasChanged?.Invoke(sender, e);
         private void textBox_Click(object sender, EventArgs e) => OnClick(e);
         private void textBox_MouseLeave(object sender, EventArgs e) => OnMouseLeave(e);
         private void textBox_MouseEnter(object sender, EventArgs e) => OnMouseEnter(e);
