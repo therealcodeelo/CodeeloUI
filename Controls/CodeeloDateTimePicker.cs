@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using CodeeloUI.Properties;
 
@@ -120,7 +122,7 @@ namespace CodeeloUI.Controls
             using (StringFormat textFormat = new StringFormat())
             {
                 var clientArea = new RectangleF(0, 0, Width - 0.5F, Height - 0.5F);
-                var iconArea = new RectangleF(clientArea.Width - CALENDAR_ICON_WIDTH, 0, CALENDAR_ICON_WIDTH, clientArea.Height);
+                var iconArea = new RectangleF(clientArea.Width - CALENDAR_ICON_WIDTH - 9, 0, CALENDAR_ICON_WIDTH, clientArea.Height);
                 penBorder.Alignment = PenAlignment.Inset;
                 textFormat.LineAlignment = StringAlignment.Center;
                 graphics.FillRectangle(skinBrush, clientArea);
@@ -137,23 +139,12 @@ namespace CodeeloUI.Controls
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
-            int iconWidth = GetIconButtonWidth();
-            _iconButtonArea = new RectangleF(Width - iconWidth, 0, iconWidth, Height);
+            _iconButtonArea = new RectangleF(Width - CALENDAR_ICON_WIDTH - 9, 0, CALENDAR_ICON_WIDTH, Height);
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
             Cursor = _iconButtonArea.Contains(e.Location) ? Cursors.Hand : Cursors.Default;
-        }
-        #endregion
-
-        #region [ Методы ]
-        private int GetIconButtonWidth()
-        {
-            int textWidth = TextRenderer.MeasureText(Text, Font).Width;
-            if (textWidth <= Width - (CALENDAR_ICON_WIDTH + 20))
-                return CALENDAR_ICON_WIDTH;
-            return ARROW_ICON_WIDTH;
         }
         #endregion
     }

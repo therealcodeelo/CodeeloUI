@@ -66,6 +66,9 @@
     <Compile Include="Animation\Effects\Transform\TopAnchoredHeightEffect.cs" />
     <Compile Include="Animation\Effects\Transform\VerticalFoldEffect.cs" />
     <Compile Include="Animation\Effects\Transform\YLocationEffect.cs" />
+    <Compile Include="Controls\CodeeloNumericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ToolTip\CodeeloBorder.cs" />
     <Compile Include="Components\CodeeloToolTip.cs">
       <SubType>Component</SubType>
