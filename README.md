@@ -56,6 +56,7 @@
 - :zap: ToggleButton - переключатель (CheckBox)
 
 [![Watch the video](https://i.ytimg.com/vi/rdctGM1fOO0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBEUxVRiw_SRHtFhZ1heB4i2O1nVg)](https://youtu.be/rdctGM1fOO0)
+- :zap: NumericUpDown - поле для прибавки/вычитания числовых значений
 
 В настоящее время доступны компоненты:
 - :zap: AnimateForm - компонент для анимирования формы из WinAPI
