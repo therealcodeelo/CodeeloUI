@@ -178,7 +178,18 @@ namespace CodeeloUI.Controls
             get => _combobox.SelectedIndex;
             set => _combobox.SelectedIndex = value;
         }
-
+        [Browsable(false), Bindable(true)]
+        public object SelectedValue
+        {
+            get => _combobox.SelectedValue;
+            set => _combobox.SelectedValue = value;
+        }
+        [Browsable(false)]
+        public string SelectedText
+        {
+            get => _combobox.SelectedText;
+            set => _combobox.SelectedText = value;
+        }
         #endregion
         #region [ Скрытые свойства класса ]
         [Browsable(false)]

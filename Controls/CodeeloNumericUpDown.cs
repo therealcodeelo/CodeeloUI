@@ -153,30 +153,20 @@ namespace CodeeloUI.Controls
             }
 
             var textSize = TextRenderer.MeasureText(Value.ToString(), Font);
-            var minusTextSize = TextRenderer.MeasureText("–", new Font(Font.Name, FontHeight + 5));
-            var plusTextSize = TextRenderer.MeasureText("+", new Font(Font.Name, FontHeight + 5));
+            var minusTextSize = TextRenderer.MeasureText("–", new Font(FontFamily.GenericSansSerif, 24));
+            var plusTextSize = TextRenderer.MeasureText("+", new Font(FontFamily.GenericSansSerif, 24));
 
             graphics.DrawString(Value.ToString(), Font, new SolidBrush(ForeColor)
                 , _mainArea.X + (_mainArea.Width / 2 - textSize.Width / 2)
                 , _mainArea.Y + (_mainArea.Height / 2 - textSize.Height / 2));
 
-            graphics.DrawString("–", new Font(Font.Name, FontHeight + 5), new SolidBrush(ForeColor)
+            graphics.DrawString("–", new Font(FontFamily.GenericSansSerif, 24), new SolidBrush(ForeColor)
                 , _minusCircleArea.X + 3 + (_minusCircleArea.Width / 4 - minusTextSize.Width / 4)
                 , _minusCircleArea.Y-3 + (_minusCircleArea.Height / 2 - minusTextSize.Height / 2));
 
-            graphics.DrawString("+", new Font(Font.Name, FontHeight + 5), new SolidBrush(ForeColor)
+            graphics.DrawString("+", new Font(FontFamily.GenericSansSerif, 24), new SolidBrush(ForeColor)
                 , _plusCircleArea.X + _plusCircleArea.Width/2+(_plusCircleArea.Width / 4 - plusTextSize.Width / 2)
                 , _plusCircleArea.Y + (_plusCircleArea.Height / 2 - plusTextSize.Height / 2));
-
-            //_minusCircleArea = new Rectangle(_minusCircleArea.X + (_minusCircleArea.Width / 4 - minusTextSize.Width / 4)
-            //    , _minusCircleArea.Y - 3 + (_minusCircleArea.Height / 2 - minusTextSize.Height / 2), minusTextSize.Width, minusTextSize.Height);
-            //_plusCircleArea = new Rectangle(_plusCircleArea.X - 3 + _plusCircleArea.Width / 2 + (_plusCircleArea.Width / 4 - plusTextSize.Width / 2)
-            //    , _plusCircleArea.Y + (_plusCircleArea.Height / 2 - plusTextSize.Height / 2), plusTextSize.Width, plusTextSize.Height);
-
-            //graphics.DrawEllipse(Pens.CadetBlue, _minusCircleArea.X + (_minusCircleArea.Width / 4 - minusTextSize.Width / 4)
-            //    , _minusCircleArea.Y - 3 + (_minusCircleArea.Height / 2 - minusTextSize.Height / 2), minusTextSize.Width,minusTextSize.Height);
-            //graphics.DrawEllipse(Pens.CadetBlue, _plusCircleArea.X-3 + _plusCircleArea.Width / 2 + (_plusCircleArea.Width / 4 - plusTextSize.Width / 2)
-            //    , _plusCircleArea.Y + (_plusCircleArea.Height / 2 - plusTextSize.Height / 2), plusTextSize.Width, plusTextSize.Height);
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
