@@ -272,25 +272,22 @@ namespace CodeeloUI.Controls
 
         private void DrawItemEventHandler(object sender, DrawItemEventArgs e)
         {
-            //e.DrawBackground();
-            //if (e.Index >= 0)
-            //{
-            //    System.Drawing.Graphics g = e.Graphics;
-            //    Brush brush = ((e.State & DrawItemState.Selected) == DrawItemState.Selected) ?
-            //                   new SolidBrush(Color.FromArgb(255, 68, 71)) : new SolidBrush(e.BackColor);
-            //    Brush tBrush = new SolidBrush(e.ForeColor);
-
-            //    g.FillRectangle(brush, e.Bounds);
-            //    if (_combobox.DataSource == null)
-            //    {
-            //        e.Graphics.DrawString(Items[e.Index].ToString(), e.Font,
-            //               tBrush, e.Bounds, StringFormat.GenericDefault);
-            //    }
-
-            //    brush.Dispose();
-            //    tBrush.Dispose();
-            //}
-            //e.DrawFocusRectangle();
+            e.DrawBackground();
+            if (e.Index >= 0)
+            {
+                System.Drawing.Graphics g = e.Graphics;
+                using (Brush brush = ((e.State & DrawItemState.Selected) == DrawItemState.Selected) ? new SolidBrush(Color.FromArgb(255, 68, 71)) : new SolidBrush(e.BackColor))
+                using (Brush tBrush = new SolidBrush(e.ForeColor))
+                {
+                    g.FillRectangle(brush, e.Bounds);
+                    if (_combobox.DataSource == null)
+                    {
+                        e.Graphics.DrawString(Items[e.Index].ToString(), e.Font,
+                               tBrush, e.Bounds, StringFormat.GenericDefault);
+                    }
+                }
+            }
+            e.DrawFocusRectangle();
         }
 
         private void AdjustComboBoxDimensions()
