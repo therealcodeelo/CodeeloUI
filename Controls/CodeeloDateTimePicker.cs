@@ -38,16 +38,6 @@ namespace CodeeloUI.Controls
                 Invalidate();
             }
         }
-        [Description("Цвет текста"), Category("Настройки внешнего вида"), Browsable(true)]
-        public new Color ForeColor
-        {
-            get => _foreColor;
-            set
-            {
-                _foreColor = value;
-                Invalidate();
-            }
-        }
         [Description("Цвет границ элемента"), Category("Настройки внешнего вида")]
         public Color BorderColor
         {
@@ -65,6 +55,16 @@ namespace CodeeloUI.Controls
             set
             {
                 _borderSize = value;
+                Invalidate();
+            }
+        }
+        [Description("Цвет текста"), Category("Настройки внешнего вида")]
+        public Color TextColor
+        {
+            get => _foreColor;
+            set
+            {
+                _foreColor = value;
                 Invalidate();
             }
         }
@@ -118,7 +118,7 @@ namespace CodeeloUI.Controls
             using (Pen penBorder = new Pen(_borderColor, _borderSize))
             using (SolidBrush skinBrush = new SolidBrush(_backColor))
             using (SolidBrush openIconBrush = new SolidBrush(Color.FromArgb(50, 64, 64, 64)))
-            using (SolidBrush textBrush = new SolidBrush(_foreColor))
+            using (SolidBrush textBrush = new SolidBrush(TextColor))
             using (StringFormat textFormat = new StringFormat())
             {
                 var clientArea = new RectangleF(0, 0, Width - 0.5F, Height - 0.5F);

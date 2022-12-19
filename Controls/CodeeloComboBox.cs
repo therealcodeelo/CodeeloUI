@@ -85,14 +85,22 @@ namespace CodeeloUI.Controls
 
         public override Color ForeColor
         {
-            get => base.ForeColor; 
-            set => _combobox.ForeColor = base.ForeColor = value;
+            get => base.ForeColor;
+            set 
+            { 
+                _combobox.ForeColor = base.ForeColor = value;
+                Invalidate();
+            }
         }
 
         public override Font Font
         {
             get => base.Font;
-            set => _combobox.Font = base.Font = value;
+            set 
+            { 
+                _combobox.Font = base.Font = value;
+                Invalidate();
+            }
         }
 
         public override string Text
@@ -205,7 +213,7 @@ namespace CodeeloUI.Controls
 
             //ComboBox: Dropdown list
             _combobox.BackColor = _listBackColor;
-            _combobox.Font = new Font(this.Font.Name, 10F);
+            _combobox.Font = new Font(Font.Name, 10F);
             _combobox.ForeColor = _listForeColor;
             _combobox.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);//Default event
             _combobox.TextChanged += new EventHandler(ComboBox_TextChanged);//Refresh text
@@ -238,11 +246,11 @@ namespace CodeeloUI.Controls
             this.Controls.Add(_combobox);//0
 
          
-            this.ForeColor = Color.DimGray;
-            this.Padding = new Padding(_borderSize);//Border Size
-            this.Font = new Font(this.Font.Name, 10F);
+            ForeColor = Color.DimGray;
+            Padding = new Padding(_borderSize);//Border Size
+            Font = new Font(Font.Name, 10F);
             base.BackColor = _borderColor; //Border Color
-            this.ResumeLayout();
+            ResumeLayout();
             AdjustComboBoxDimensions();
         }
 
@@ -373,17 +381,5 @@ namespace CodeeloUI.Controls
             lblText.Text = _combobox.Text;
         }
 
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // CodeeloComboBox
-            // 
-            this.MinimumSize = new System.Drawing.Size(200, 30);
-            this.Name = "CodeeloComboBox";
-            this.Size = new System.Drawing.Size(200, 30);
-            this.ResumeLayout(false);
-
-        }
     }
 }
