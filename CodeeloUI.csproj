@@ -66,6 +66,9 @@
     <Compile Include="Animation\Effects\Transform\TopAnchoredHeightEffect.cs" />
     <Compile Include="Animation\Effects\Transform\VerticalFoldEffect.cs" />
     <Compile Include="Animation\Effects\Transform\YLocationEffect.cs" />
+    <Compile Include="Controls\CodeeloComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\CodeeloNumericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -108,9 +111,6 @@
     </Compile>
     <Compile Include="Controls\CodeeloCircularProgressBar.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CodeeloComboBox.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\CodeeloGroupBox.cs">
       <SubType>Component</SubType>
@@ -182,9 +182,6 @@
     <Compile Include="Animation\Effects\Transform\XLocationEffect.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\CodeeloComboBox.resx">
-      <DependentUpon>CodeeloComboBox.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CodeeloTextBox.resx">
       <DependentUpon>CodeeloTextBox.cs</DependentUpon>
     </EmbeddedResource>

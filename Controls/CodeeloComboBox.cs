@@ -10,7 +10,8 @@ namespace CodeeloUI.Controls
     [ToolboxBitmap(typeof(CodeeloComboBox), "Icons.CodeeloComboBox.bmp")]
     [ToolboxItem(true)]
     [Description("Элемент отображения выпадающих списков")]
-    public sealed class CodeeloComboBox : UserControl
+
+    public class CodeeloComboBox : Control
     {
         #region [ Поля класса ]
         private Color _backColor = Color.WhiteSmoke;
@@ -19,15 +20,16 @@ namespace CodeeloUI.Controls
         private Color _listForeColor = Color.DimGray;
         private Color _borderColor = Color.MediumSlateBlue;
         private int _borderSize = 1;
-        private readonly ComboBox _combobox;
+        private readonly ComboBox _comboBox;
         private readonly Button _button;
-        private Label lblText;
+        private Label _labelText;
 
         public event EventHandler OnSelectedIndexChanged;
         public new event KeyPressEventHandler OnKeyPress;
 
-
         private Timer _caretTimer;
+        private bool _selected;
+        private bool _ticked;
         #endregion
 
         #region [ Свойства класса ]
@@ -36,11 +38,11 @@ namespace CodeeloUI.Controls
             get => _backColor;
             set
             {
-                lblText.BackColor = _button.BackColor = _backColor = value;
+                _labelText.BackColor = _button.BackColor = _backColor = value;
                 Invalidate();
             }
         }
-  
+
         public Color ArrowColor
         {
             get => _iconColor;
@@ -53,13 +55,13 @@ namespace CodeeloUI.Controls
         public Color ListBackColor
         {
             get => _listBackColor;
-            set => _combobox.BackColor = _listBackColor = value;
+            set => _comboBox.BackColor = _listBackColor = value;
         }
 
         public Color ListTextColor
         {
             get => _listForeColor;
-            set => _combobox.ForeColor = _listForeColor = value;
+            set => _comboBox.ForeColor = _listForeColor = value;
         }
         public Color BorderColor
         {
@@ -86,9 +88,9 @@ namespace CodeeloUI.Controls
         public override Color ForeColor
         {
             get => base.ForeColor;
-            set 
-            { 
-                _combobox.ForeColor = base.ForeColor = value;
+            set
+            {
+                _comboBox.ForeColor = base.ForeColor = value;
                 Invalidate();
             }
         }
@@ -96,107 +98,107 @@ namespace CodeeloUI.Controls
         public override Font Font
         {
             get => base.Font;
-            set 
-            { 
-                _combobox.Font = base.Font = value;
+            set
+            {
+                _labelText.Font = _comboBox.Font = base.Font = value;
                 Invalidate();
             }
         }
 
         public override string Text
         {
-            get => _combobox.Text; 
-            set => _combobox.Text = value; 
+            get => _comboBox.Text;
+            set => _comboBox.Text = value;
         }
-  
+
         public ComboBoxStyle DropDownStyle
         {
-            get => _combobox.DropDownStyle; 
+            get => _comboBox.DropDownStyle;
             set
             {
-                if (_combobox.DropDownStyle != ComboBoxStyle.Simple)
-                    _combobox.DropDownStyle = value;
+                if (_comboBox.DropDownStyle != ComboBoxStyle.Simple)
+                    _comboBox.DropDownStyle = value;
             }
         }
 
         public int DropDownWidth
-        { 
-            get => _combobox.DropDownWidth;
-            set => _combobox.DropDownWidth = value;
+        {
+            get => _comboBox.DropDownWidth;
+            set => _comboBox.DropDownWidth = value;
         }
 
         [Category("Привязка данных")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor", typeof(UITypeEditor))]
-        public ComboBox.ObjectCollection Items => _combobox.Items;
+        public ComboBox.ObjectCollection Items => _comboBox.Items;
 
         [Category("Привязка данных"), DefaultValue(null)]
         [AttributeProvider(typeof(IListSource))]
         public object DataSource
         {
-            get => _combobox.DataSource;
-            set => _combobox.DataSource = value;
+            get => _comboBox.DataSource;
+            set => _comboBox.DataSource = value;
         }
         [Category("Привязка данных")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor", typeof(UITypeEditor))]
         public AutoCompleteStringCollection AutoCompleteCustomSource
         {
-            get => _combobox.AutoCompleteCustomSource;
-            set => _combobox.AutoCompleteCustomSource = value;
+            get => _comboBox.AutoCompleteCustomSource;
+            set => _comboBox.AutoCompleteCustomSource = value;
         }
         [Category("Привязка данных"), DefaultValue(AutoCompleteSource.None)]
         public AutoCompleteSource AutoCompleteSource
         {
-            get => _combobox.AutoCompleteSource;
-            set => _combobox.AutoCompleteSource = value;
+            get => _comboBox.AutoCompleteSource;
+            set => _comboBox.AutoCompleteSource = value;
         }
         [Category("Привязка данных"), DefaultValue(AutoCompleteMode.None)]
         public AutoCompleteMode AutoCompleteMode
         {
-            get => _combobox.AutoCompleteMode; 
-            set => _combobox.AutoCompleteMode = value;
+            get => _comboBox.AutoCompleteMode;
+            set => _comboBox.AutoCompleteMode = value;
         }
         [Category("Привязка данных"), DefaultValue("")]
         [Editor("System.Windows.Forms.Design.DataMemberFieldEditor", typeof(UITypeEditor))]
         [TypeConverter("System.Windows.Forms.Design.DataMemberFieldConverter")]
         public string DisplayMember
         {
-            get => _combobox.DisplayMember;
-            set => _combobox.DisplayMember = value;
+            get => _comboBox.DisplayMember;
+            set => _comboBox.DisplayMember = value;
         }
         [Category("Привязка данных"), DefaultValue("")]
         [Editor("System.Windows.Forms.Design.DataMemberFieldEditor", typeof(UITypeEditor))]
         [TypeConverter("System.Windows.Forms.Design.DataMemberFieldConverter")]
         public string ValueMember
         {
-            get => _combobox.ValueMember;
-            set => _combobox.ValueMember = value;
+            get => _comboBox.ValueMember;
+            set => _comboBox.ValueMember = value;
         }
 
         [Browsable(false), Bindable(true)]
         public object SelectedItem
         {
-            get => _combobox.SelectedItem;
-            set => _combobox.SelectedItem = value;
+            get => _comboBox.SelectedItem;
+            set => _comboBox.SelectedItem = value;
         }
         [Browsable(false)]
         public int SelectedIndex
         {
-            get => _combobox.SelectedIndex;
-            set => _combobox.SelectedIndex = value;
+            get => _comboBox.SelectedIndex;
+            set => _comboBox.SelectedIndex = value;
         }
         [Browsable(false), Bindable(true)]
         public object SelectedValue
         {
-            get => _combobox.SelectedValue;
-            set => _combobox.SelectedValue = value;
+            get => _comboBox.SelectedValue;
+            set => _comboBox.SelectedValue = value;
         }
         [Browsable(false)]
         public string SelectedText
         {
-            get => _combobox.SelectedText;
-            set => _combobox.SelectedText = value;
+            get => _comboBox.SelectedText;
+            set => _comboBox.SelectedText = value;
         }
         #endregion
         #region [ Скрытые свойства класса ]
@@ -206,71 +208,95 @@ namespace CodeeloUI.Controls
         public CodeeloComboBox()
         {
             DoubleBuffered = true;
-            _combobox = new ComboBox();
-            lblText = new Label();
+            _comboBox = new ComboBox();
+            _labelText = new Label();
             _button = new Button();
+            Size = new Size(200, 30);
             SuspendLayout();
 
-            //ComboBox: Dropdown list
-            _combobox.BackColor = _listBackColor;
-            _combobox.Font = new Font(Font.Name, 10F);
-            _combobox.ForeColor = _listForeColor;
-            _combobox.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);//Default event
-            _combobox.TextChanged += new EventHandler(ComboBox_TextChanged);//Refresh text
-                                                                          //Button: Icon
+            _comboBox.BackColor = _listBackColor;
+            _comboBox.Font = Font;
+            _comboBox.ForeColor = _listForeColor;
+            _comboBox.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);
+            _comboBox.TextChanged += new EventHandler(ComboBox_TextChanged);
+
             _button.Dock = DockStyle.Right;
             _button.FlatStyle = FlatStyle.Flat;
             _button.FlatAppearance.BorderSize = 0;
             _button.BackColor = _backColor;
             _button.Size = new Size(30, 30);
             _button.Cursor = Cursors.Hand;
-            _button.Click += new EventHandler(Icon_Click);//Open dropdown list
-            _button.Paint += new PaintEventHandler(Icon_Paint);//Draw icon
-                                                               //Label: Text
-            lblText.Dock = DockStyle.Fill;
-            lblText.AutoSize = false;
-            lblText.BackColor = _backColor;
-            lblText.TextAlign = ContentAlignment.MiddleLeft;
-            lblText.Padding = new Padding(8, 0, 0, 0);
-            lblText.Font = new Font(this.Font.Name, 10F);
-            //->Attach label events to user control event
-            lblText.Click += new EventHandler(Surface_Click);//Select combo box
-            lblText.MouseEnter += new EventHandler(Surface_MouseEnter);
-            lblText.MouseLeave += new EventHandler(Surface_MouseLeave);
-            lblText.GotFocus += LblText_GotFocus;
-            lblText.LostFocus += LblText_LostFocus;
+            _button.Click += new EventHandler(Icon_Click);
+            _button.Paint += new PaintEventHandler(Icon_Paint);
 
-            //User Control
-            this.Controls.Add(lblText);//2
-            this.Controls.Add(_button);//1
-            this.Controls.Add(_combobox);//0
+            _labelText.Dock = DockStyle.Fill;
+            _labelText.AutoSize = false;
+            _labelText.BackColor = _backColor;
+            _labelText.TextAlign = ContentAlignment.MiddleLeft;
+            _labelText.Padding = new Padding(8, 0, 0, 0);
+            _labelText.Font = Font;
+            _labelText.Click += new EventHandler(Surface_Click);
+            _labelText.MouseEnter += new EventHandler(Surface_MouseEnter);
+            _labelText.MouseLeave += new EventHandler(Surface_MouseLeave);
+            _labelText.MouseEnter += LabelText_MouseEnter;
+            _labelText.MouseLeave += LabelText_MouseLeave;
 
-         
+            Controls.Add(_labelText);
+            Controls.Add(_button);
+            Controls.Add(_comboBox);
+
+
             ForeColor = Color.DimGray;
-            Padding = new Padding(_borderSize);//Border Size
+            Padding = new Padding(_borderSize);
             Font = new Font(Font.Name, 10F);
-            base.BackColor = _borderColor; //Border Color
+            base.BackColor = _borderColor;
             ResumeLayout();
             AdjustComboBoxDimensions();
         }
-
-
-        private void LblText_GotFocus(object sender, EventArgs e)
+        #region [ Методы ]
+        private void ShowCaret()
         {
-            ShowCaret();
+            _selected = true;
+            if (_caretTimer == null)
+            {
+                _caretTimer = new Timer();
+                _caretTimer.Interval = 400;
+                _caretTimer.Tick += Timer_Tick;
+                _caretTimer.Start();
+            }
+        }
+        private void AdjustComboBoxDimensions()
+        {
+            _comboBox.Width = _labelText.Width;
+            _comboBox.Location = new Point()
+            {
+                X = Padding.Right,
+                Y = _labelText.Bottom - _comboBox.Height
+            };
+        }
+        #endregion
+
+        #region [ События ]
+        private void LabelText_MouseLeave(object sender, EventArgs e)
+        {
+            _selected = false;
+            _labelText.Text = _labelText.Text.Split('|')[0];
         }
 
-        private void LblText_LostFocus(object sender, EventArgs e)
-        {
-            //MessageBox.Show("Test");
-            selected = false;
-            //_caretTimer.Stop();
-        }
 
-        private void ComboBox_TextChanged(object sender, EventArgs e)
+        private void LabelText_MouseEnter(object sender, EventArgs e) => ShowCaret();
+        private void Timer_Tick(object sender, EventArgs e)
         {
-            lblText.Text = _combobox.Text;
+            _ticked = !_ticked;
+            if (_selected)
+            {
+                if (_ticked)
+                    _labelText.Text += '|';
+                else
+                    _labelText.Text = _labelText.Text.Split('|')[0];
+            }
         }
+        private void ComboBox_TextChanged(object sender, EventArgs e) => _labelText.Text = _comboBox.Text;
 
         private void KeyPressEventHandler(object sender, KeyPressEventArgs e)
         {
@@ -288,7 +314,7 @@ namespace CodeeloUI.Controls
                 using (Brush tBrush = new SolidBrush(e.ForeColor))
                 {
                     g.FillRectangle(brush, e.Bounds);
-                    if (_combobox.DataSource == null)
+                    if (_comboBox.DataSource == null)
                     {
                         e.Graphics.DrawString(Items[e.Index].ToString(), e.Font,
                                tBrush, e.Bounds, StringFormat.GenericDefault);
@@ -296,16 +322,6 @@ namespace CodeeloUI.Controls
                 }
             }
             e.DrawFocusRectangle();
-        }
-
-        private void AdjustComboBoxDimensions()
-        {
-            _combobox.Width = lblText.Width;
-            _combobox.Location = new Point()
-            {
-                X = this.Width - this.Padding.Right - _combobox.Width,
-                Y = lblText.Bottom - _combobox.Height
-            };
         }
         protected override void OnResize(EventArgs e)
         {
@@ -319,37 +335,12 @@ namespace CodeeloUI.Controls
         private void Surface_Click(object sender, EventArgs e)
         {
             OnClick(e);
-            lblText.Focus();
-            _combobox.Select();
+            _labelText.Focus();
+            _comboBox.Select();
 
-            if (_combobox.DropDownStyle == ComboBoxStyle.DropDownList)
-                _combobox.DroppedDown = true;
+            if (_comboBox.DropDownStyle == ComboBoxStyle.DropDownList)
+                _comboBox.DroppedDown = true;
         }
-        private void ShowCaret()
-        {
-            selected = true;
-            if(_caretTimer == null)
-            {
-                _caretTimer = new Timer();
-                _caretTimer.Interval = 700;
-                _caretTimer.Tick += Timer_Tick;
-                _caretTimer.Start();
-            }
-        }
-        private bool selected;
-        private bool ticked;
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            ticked = !ticked;
-            if (selected)
-            {
-                if(ticked)
-                    lblText.Text += '✟';
-                else
-                    lblText.Text = lblText.Text.Split('✟')[0];
-            } 
-        }
-
         private void Icon_Paint(object sender, PaintEventArgs e)
         {
             int iconWidth = 14;
@@ -369,17 +360,16 @@ namespace CodeeloUI.Controls
 
         private void Icon_Click(object sender, EventArgs e)
         {
-            _combobox.Select();
-            _combobox.DroppedDown = true;
+            _comboBox.Select();
+            _comboBox.DroppedDown = true;
         }
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (OnSelectedIndexChanged != null)
                 OnSelectedIndexChanged.Invoke(sender, e);
-            //Refresh text
-            lblText.Text = _combobox.Text;
+            _labelText.Text = _comboBox.Text;
         }
-
+        #endregion
     }
 }
