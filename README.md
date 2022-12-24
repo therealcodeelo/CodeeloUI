@@ -63,7 +63,7 @@
 
 [![Watch the video](https://i.ytimg.com/vi/uGVOh2o7j1g/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCDT2yMhZPhudnUvY7CcUx7T9Q1yA)](https://youtu.be/uGVOh2o7j1g)
 
-- :zap: Animator - компонент для анимирования контролов (требуется доработка и улучшение производительности)
+- :zap: Animator - компонент для анимирования контролов (требуется доработка и улучшение производительности) (почти полностью взят у https://www.codeproject.com/Articles/827808/Control-Animation-in-Winforms)
 
 [![Watch the video](https://i.ytimg.com/vi/nq9gJgcVano/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAexpC4QNdP8g1cLXhKQcIysDPSCQ)](https://youtu.be/nq9gJgcVano)
 
@@ -76,7 +76,7 @@
 - :zap: ShadowEffect - компонент для добавления эффекта тени к контролам
 
 [![Watch the video](https://i.ytimg.com/vi/Ctdf8U4DLF4/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBa5_vnorGksMAI9YE8ku0wmUelZg)](https://youtu.be/Ctdf8U4DLF4)
-- :zap: ToolTip - компонент для показа всплывающих подсказок
+- :zap: ToolTip - компонент для показа всплывающих подсказок (почти полностью взят у https://github.com/ahdung/MessageTip)
 ---
 
 
