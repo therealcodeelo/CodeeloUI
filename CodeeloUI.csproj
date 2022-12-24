@@ -233,5 +233,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Components\Icons\CodeeloToolTip.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\Icons\CodeeloNumericUpDownBmp.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

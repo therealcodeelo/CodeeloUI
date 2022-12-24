@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace CodeeloUI.Controls
 {
+    [ToolboxBitmap(typeof(CodeeloGroupBox), "Icons.CodeeloNumericUpDownBmp.bmp")]
+    [ToolboxItem(true)]
+    [Description("Элемент для отображения чисел с возможность уменьшения/увеличения их значений")]
     public class CodeeloNumericUpDown : Control
     {
         #region [ Поля класса ]
