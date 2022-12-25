@@ -18,6 +18,9 @@
   </div>
   </div>
   
+  [![NuGet](https://img.shields.io/nuget/v/CodeeloUI)](https://www.nuget.org/packages/CodeeloUI/)
+  [![NuGet](https://img.shields.io/nuget/dt/CodeeloUI)](https://www.nuget.org/packages/CodeeloUI/)
+  
 ---
 ### :right_anger_bubble: Информация о библиотеке:
 В настоящее время доступны и работают контролы:
