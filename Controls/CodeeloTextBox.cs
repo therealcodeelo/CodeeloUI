@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Design;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
@@ -74,7 +73,7 @@ namespace CodeeloUI.Controls
             set
             {
                 _usePasswordChar = value;
-                if(!_usePlaceholder)
+                if (!_usePlaceholder)
                     textBox.UseSystemPasswordChar = value;
             }
         }
@@ -113,7 +112,7 @@ namespace CodeeloUI.Controls
         {
             get
             {
-                if (_usePlaceholder) 
+                if (_usePlaceholder)
                     return string.Empty;
                 return textBox.Text;
             }
@@ -197,7 +196,7 @@ namespace CodeeloUI.Controls
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-        //    InvokePaintBackground(this, e);
+            //    InvokePaintBackground(this, e);
             var graphics = e.Graphics;
 
             using (Pen penBorder = new Pen(_borderColor, _borderSize))

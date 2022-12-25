@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
+﻿using CodeeloUI.SupportControls;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using CodeeloUI.SupportControls;
 
 namespace CodeeloUI.Components
 {
@@ -58,14 +58,14 @@ namespace CodeeloUI.Components
                 textHeight += textHeight / 4;
             }
 
-            var newNotification = new Notification(Size, BackColor, Font,ForeColor, textHeight,
+            var newNotification = new Notification(Size, BackColor, Font, ForeColor, textHeight,
                 ShowDurationInSeconds, notificationText, LogoImage, HoveredOpacity, RegularOpacity);
             newNotification.ShowNotification();
             //using ()
             //{
-               
+
             //}
-            
+
         }
     }
 }

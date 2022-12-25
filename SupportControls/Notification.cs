@@ -1,11 +1,11 @@
-﻿using System;
+﻿using CodeeloUI.Enums;
+using CodeeloUI.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using CodeeloUI.Enums;
-using CodeeloUI.Properties;
 
 namespace CodeeloUI.SupportControls
 {
@@ -20,9 +20,9 @@ namespace CodeeloUI.SupportControls
         private readonly string _message;
         private readonly double _hoveredOpacity = 1.0;
         private readonly double _regularOpacity = 0.6;
-        
 
-        public Notification(Size size, Color backColor, Font font,Color foreColor, int textHeight, int lifeTime, 
+
+        public Notification(Size size, Color backColor, Font font, Color foreColor, int textHeight, int lifeTime,
             string message, Image logoImage, double hoveredOpacity, double regularOpacity)
         {
             InitializeComponent();
@@ -123,7 +123,7 @@ namespace CodeeloUI.SupportControls
                 Thread.Sleep(_lifeTime * 1000);
                 _action = NotificationAction.Closed;
             }
-            if(_action == NotificationAction.Closed && !isPinned && _lifeTime > 0)
+            if (_action == NotificationAction.Closed && !isPinned && _lifeTime > 0)
             {
                 while (Opacity > 0.0)
                 {
@@ -160,12 +160,12 @@ namespace CodeeloUI.SupportControls
                 });
                 _action = NotificationAction.Active;
                 _backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
-                if(!_backgroundWorker.IsBusy)
+                if (!_backgroundWorker.IsBusy)
                     _backgroundWorker.RunWorkerAsync();
             }
         }
         private void CloseButton_Click(object sender, EventArgs e) => Close();
-        private void Notification_MouseLeave(object sender, EventArgs e) 
+        private void Notification_MouseLeave(object sender, EventArgs e)
         {
             try
             {
@@ -174,7 +174,7 @@ namespace CodeeloUI.SupportControls
             catch (Exception)
             {
             }
-        } 
+        }
         private void Notification_MouseEnter(object sender, EventArgs e) => Opacity = _hoveredOpacity;
     }
 }

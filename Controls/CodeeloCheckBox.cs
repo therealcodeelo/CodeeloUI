@@ -166,7 +166,7 @@ namespace CodeeloUI.Controls
                             break;
                         case CheckBoxMark.CheckBoxFigure:
                             {
-                                var rectButtonChecked = new RectangleF(rectButton.X + ((rectButton.Width - (_markWidth*2)) / 2)
+                                var rectButtonChecked = new RectangleF(rectButton.X + ((rectButton.Width - (_markWidth * 2)) / 2)
                 , (Height - (_markWidth * 2)) / 2
                 , (_markWidth * 2), (_markWidth * 2));
 
@@ -180,7 +180,7 @@ namespace CodeeloUI.Controls
                             {
                                 graphics.DrawLine(penMark,
                                     rectButton.X + rectButton.Width / 4, rectButton.Y + rectButton.Height / 4,
-                                    rectButton.X + rectButton.Width - rectButton.Width/4, rectButton.Y + rectButton.Height - rectButton.Height / 4);
+                                    rectButton.X + rectButton.Width - rectButton.Width / 4, rectButton.Y + rectButton.Height - rectButton.Height / 4);
 
                                 graphics.DrawLine(penMark,
                                     rectButton.X + rectButton.Width / 4, rectButton.Y + rectButton.Height - rectButton.Height / 4,

@@ -31,6 +31,7 @@ namespace CodeeloUI.SupportControls
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Notification));
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.PinButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
@@ -78,7 +79,7 @@ namespace CodeeloUI.SupportControls
             // NotificationText
             // 
             this.NotificationText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NotificationText.Font = new System.Drawing.Font("Bahnschrift", 9.75F);
+            this.NotificationText.Font = ((System.Drawing.Font)(resources.GetObject("NotificationText.Font")));
             this.NotificationText.ForeColor = System.Drawing.Color.White;
             this.NotificationText.Location = new System.Drawing.Point(100, 32);
             this.NotificationText.Name = "NotificationText";

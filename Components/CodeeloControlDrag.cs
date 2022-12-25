@@ -23,7 +23,7 @@ namespace CodeeloUI.Components
                     _sourceControl.MouseDown -= SourceControl_MouseDown;
                     _sourceControl.MouseUp -= SourceControl_MouseUp;
                     _sourceControl.MouseMove -= SourceControl_MouseMove;
-                }               
+                }
 
                 _sourceControl = value;
 
@@ -31,7 +31,7 @@ namespace CodeeloUI.Components
                     return;
 
                 _sourceControl.MouseDown += SourceControl_MouseDown;
-                _sourceControl.MouseUp += SourceControl_MouseUp; 
+                _sourceControl.MouseUp += SourceControl_MouseUp;
                 _sourceControl.MouseMove += SourceControl_MouseMove;
             }
         }
@@ -70,6 +70,6 @@ namespace CodeeloUI.Components
 
             InitializeComponent();
         }
-        
+
     }
 }

@@ -1,11 +1,9 @@
-﻿using System;
+﻿using CodeeloUI.Properties;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using CodeeloUI.Properties;
 
 namespace CodeeloUI.Controls
 {
@@ -72,7 +70,7 @@ namespace CodeeloUI.Controls
 
         #region [ Скрытые свойства класса ]
         [Browsable(false)]
-        public new Color CalendarForeColor {get;set;}
+        public new Color CalendarForeColor { get; set; }
         [Browsable(false)]
         public new Color CalendarMonthBackground { get; set; }
         [Browsable(false)]
@@ -127,10 +125,10 @@ namespace CodeeloUI.Controls
                 textFormat.LineAlignment = StringAlignment.Center;
                 graphics.FillRectangle(skinBrush, clientArea);
                 graphics.DrawString("   " + Text, Font, textBrush, clientArea, textFormat);
-                if (_droppedDown) 
+                if (_droppedDown)
                     graphics.FillRectangle(openIconBrush, iconArea);
 
-                if (_borderSize >= 1) 
+                if (_borderSize >= 1)
                     graphics.DrawRectangle(penBorder, clientArea.X, clientArea.Y, clientArea.Width, clientArea.Height);
 
                 graphics.DrawImage(_calendarIcon, Width - _calendarIcon.Width - 9, (Height - _calendarIcon.Height) / 2);

@@ -200,7 +200,7 @@ namespace CodeeloUI.Controls
                         graphics.DrawArc(pen, 18, 18, Width - 37, Height - 37, -90
                             , (int)Math.Round((double)(360 * _value / _maximum)));
                     }
-                    
+
 
                     switch (DisplayedTextType)
                     {
@@ -218,7 +218,7 @@ namespace CodeeloUI.Controls
                     }
 
                     if (string.IsNullOrEmpty(Text))
-                    { }    
+                    { }
 
                     using (var fontColor = new SolidBrush(ForeColor))
                     {

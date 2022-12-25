@@ -1,15 +1,15 @@
-﻿using CodeeloUI.Animation.Animator;
-using CodeeloUI.Animation.Effects;
-using CodeeloUI.Animation.Effects.Color;
-using CodeeloUI.Animation.Effects.Font;
-using CodeeloUI.Animation.Effects.Opacity;
-using CodeeloUI.Animation.Effects.Transform;
+﻿using CodeeloUI.SupportClasses.Animation.Animator;
+using CodeeloUI.SupportClasses.Animation.Effects.Color;
+using CodeeloUI.SupportClasses.Animation.Effects.Opacity;
+using CodeeloUI.SupportClasses.Animation.Effects.Transform;
+using CodeeloUI.SupportClasses.Animation.Effects.Font;
+using CodeeloUI.SupportClasses.Animation.Effects;
 using CodeeloUI.Enums;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Collections.Generic;
+using System;
 
 namespace CodeeloUI.Components
 {
@@ -243,7 +243,7 @@ namespace CodeeloUI.Components
                 doSomething,
                 Reverse,
                 LoopsCount);
-            
+
             _cancellationTokens.Add(cancellationToken);
         }
         private void SelectEffect()

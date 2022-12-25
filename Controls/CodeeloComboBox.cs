@@ -27,7 +27,7 @@ namespace CodeeloUI.Controls
         public event EventHandler OnSelectedIndexChanged;
         public new event KeyPressEventHandler OnKeyPress;
 
-        private Timer _caretTimer;
+        private System.Windows.Forms.Timer _caretTimer;
         private bool _selected;
         private bool _ticked;
         #endregion
@@ -129,7 +129,7 @@ namespace CodeeloUI.Controls
 
         [Category("Привязка данных")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor", typeof(UITypeEditor))]
+       // [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor", typeof(UITypeEditor))]
         public ComboBox.ObjectCollection Items => _comboBox.Items;
 
         [Category("Привязка данных"), DefaultValue(null)]
@@ -141,7 +141,7 @@ namespace CodeeloUI.Controls
         }
         [Category("Привязка данных")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor", typeof(UITypeEditor))]
+       // [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor", typeof(UITypeEditor))]
         public AutoCompleteStringCollection AutoCompleteCustomSource
         {
             get => _comboBox.AutoCompleteCustomSource;
@@ -160,7 +160,7 @@ namespace CodeeloUI.Controls
             set => _comboBox.AutoCompleteMode = value;
         }
         [Category("Привязка данных"), DefaultValue("")]
-        [Editor("System.Windows.Forms.Design.DataMemberFieldEditor", typeof(UITypeEditor))]
+       // [Editor("System.Windows.Forms.Design.DataMemberFieldEditor", typeof(UITypeEditor))]
         [TypeConverter("System.Windows.Forms.Design.DataMemberFieldConverter")]
         public string DisplayMember
         {
@@ -168,7 +168,7 @@ namespace CodeeloUI.Controls
             set => _comboBox.DisplayMember = value;
         }
         [Category("Привязка данных"), DefaultValue("")]
-        [Editor("System.Windows.Forms.Design.DataMemberFieldEditor", typeof(UITypeEditor))]
+      //  [Editor("System.Windows.Forms.Design.DataMemberFieldEditor", typeof(UITypeEditor))]
         [TypeConverter("System.Windows.Forms.Design.DataMemberFieldConverter")]
         public string ValueMember
         {
@@ -259,7 +259,7 @@ namespace CodeeloUI.Controls
             _selected = true;
             if (_caretTimer == null)
             {
-                _caretTimer = new Timer();
+                _caretTimer = new System.Windows.Forms.Timer();
                 _caretTimer.Interval = 400;
                 _caretTimer.Tick += Timer_Tick;
                 _caretTimer.Start();

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,7 +9,7 @@ namespace CodeeloUI.Controls
         /// <summary> 
         /// Обязательная переменная конструктора.
         /// </summary>
-        private IContainer components = null;
+        private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
         /// Освободить все используемые ресурсы.

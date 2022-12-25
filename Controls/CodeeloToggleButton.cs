@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
+﻿using CodeeloUI.SupportClasses;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using CodeeloUI.Graphics;
 
 namespace CodeeloUI.Controls
 {
@@ -103,10 +103,10 @@ namespace CodeeloUI.Controls
             int toggleSize = Height - 5;
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
             var rect = new Rectangle(0, 0, ClientRectangle.Width - 1, ClientRectangle.Height - 1);
-            var toggleRect = Checked ? new Rectangle(Width - Height + 1, 2, toggleSize, toggleSize) 
+            var toggleRect = Checked ? new Rectangle(Width - Height + 1, 2, toggleSize, toggleSize)
                 : new Rectangle(2, 2, toggleSize, toggleSize);
 
-            using (var pen = Checked ? new Pen(_areaColorChecked, 2): new Pen(_backColor, 2))
+            using (var pen = Checked ? new Pen(_areaColorChecked, 2) : new Pen(_backColor, 2))
             using (var brush = Checked ? new SolidBrush(_areaColorChecked) : new SolidBrush(_backColor))
             using (var toggleBrush = Checked ? new SolidBrush(_toggleColorChecked) : new SolidBrush(_toggleColor))
             {

@@ -1,4 +1,4 @@
-﻿namespace CodeeloUI
+﻿namespace CodeeloUI.Enums
 {
     internal enum CodeeloBorderDirection
     {

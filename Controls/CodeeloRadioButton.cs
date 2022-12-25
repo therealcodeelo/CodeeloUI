@@ -17,7 +17,7 @@ namespace CodeeloUI.Controls
         private float _buttonToggleSize = 12F;
         private bool _drawCircle = true;
         private bool _drawCircleToggle = true;
-        private float _buttonBorderSize = 1.6F; 
+        private float _buttonBorderSize = 1.6F;
         #endregion
 
         #region [ Свойства класса ]
@@ -110,10 +110,10 @@ namespace CodeeloUI.Controls
             System.Drawing.Graphics graphics = e.Graphics;
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            var rectButton = new RectangleF(3, (Height - _buttonSize) / 2, _buttonSize,_buttonSize);
+            var rectButton = new RectangleF(3, (Height - _buttonSize) / 2, _buttonSize, _buttonSize);
             var rectButtonChecked = new RectangleF(rectButton.X + ((rectButton.Width - _buttonToggleSize) / 2)
                 , (Height - _buttonToggleSize) / 2
-                , _buttonToggleSize,_buttonToggleSize);
+                , _buttonToggleSize, _buttonToggleSize);
 
             using (var penBorder = new Pen(_buttonColorChecked, _buttonBorderSize))
             using (var brushRbCheck = new SolidBrush(_buttonColorChecked))
@@ -121,7 +121,7 @@ namespace CodeeloUI.Controls
             {
                 if (Checked)
                 {
-                    if(_drawCircle)
+                    if (_drawCircle)
                         graphics.DrawEllipse(penBorder, rectButton);
                     else
                         graphics.DrawRectangles(penBorder, new[] { rectButton });
@@ -135,7 +135,7 @@ namespace CodeeloUI.Controls
                 {
                     penBorder.Color = _buttonColor;
 
-                    if(_drawCircle)
+                    if (_drawCircle)
                         graphics.DrawEllipse(penBorder, rectButton);
                     else
                         graphics.DrawRectangles(penBorder, new[] { rectButton });

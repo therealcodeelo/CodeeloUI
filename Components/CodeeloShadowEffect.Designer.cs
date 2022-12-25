@@ -1,14 +1,11 @@
-﻿
-using System.ComponentModel;
-
-namespace CodeeloUI.Components
+﻿namespace CodeeloUI.Components
 {
     partial class CodeeloShadowEffect
     {
         /// <summary>
         /// Обязательная переменная конструктора.
         /// </summary>
-        private IContainer components = null;
+        private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
         /// Освободить все используемые ресурсы.
@@ -31,7 +28,7 @@ namespace CodeeloUI.Components
         /// </summary>
         private void InitializeComponent()
         {
-            components = new Container();
+            components = new System.ComponentModel.Container();
         }
 
         #endregion

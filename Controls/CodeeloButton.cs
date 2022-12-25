@@ -1,10 +1,10 @@
-﻿using System;
+﻿using CodeeloUI.Enums;
+using CodeeloUI.SupportClasses;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using CodeeloUI.Enums;
-using CodeeloUI.Graphics;
 
 namespace CodeeloUI.Controls
 {
@@ -261,7 +261,7 @@ namespace CodeeloUI.Controls
         protected override void OnPaint(PaintEventArgs e)
         {
             InvokePaintBackground(this, e);
-            
+
             var graphics = e.Graphics;
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
@@ -270,7 +270,7 @@ namespace CodeeloUI.Controls
             Color firstFillColor, secondFillColor, firstBorderColor, secondBorderColor;
             if (_isEntered)
             {
-                if(_isClicked)
+                if (_isClicked)
                 {
                     firstFillColor = _onClickFirstFillColor;
                     secondFillColor = _onClickSecondFillColor;
@@ -301,7 +301,7 @@ namespace CodeeloUI.Controls
                 if (_borderRadius > 2)
                 {
                     using (var borderPath = GraphicsUtils.GetFigurePath(Rectangle.Inflate(ClientRectangle, -2, -2), _borderRadius))
-                    using (var path = GraphicsUtils.GetFigurePath(Rectangle.Inflate(ClientRectangle, -1, -1), _borderRadius)) 
+                    using (var path = GraphicsUtils.GetFigurePath(Rectangle.Inflate(ClientRectangle, -1, -1), _borderRadius))
                     {
                         if (_useGradient)
                             graphics.FillPath(gradientBrush, path);
@@ -324,7 +324,7 @@ namespace CodeeloUI.Controls
                     else
                         graphics.FillRectangle(new SolidBrush(firstFillColor), ClientRectangle);
 
-                    if(borderSize > 0)
+                    if (borderSize > 0)
                     {
                         penBorder.Alignment = PenAlignment.Center;
                         graphics.DrawRectangle(penBorder, 0, 0, Width - 1, Height - 1);

@@ -1,5 +1,4 @@
-﻿
-namespace CodeeloUI.Components
+﻿namespace CodeeloUI.Components
 {
     partial class CodeeloFormDrag
     {

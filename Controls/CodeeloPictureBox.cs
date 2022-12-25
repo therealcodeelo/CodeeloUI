@@ -78,7 +78,7 @@ namespace CodeeloUI.Controls
         [Description("Второй цвет для градиентного заполнения границ"), Category("Границы элемента")]
         public Color BorderColorSecond
         {
-            get => _borderColorSecond; 
+            get => _borderColorSecond;
             set
             {
                 _borderColorSecond = value;
@@ -98,7 +98,7 @@ namespace CodeeloUI.Controls
         [Description("Тип конца линии (прямоугольный, закругленный, треугольный)"), Category("Границы элемента")]
         public DashCap BorderCapStyle
         {
-            get => _borderCapStyle; 
+            get => _borderCapStyle;
             set
             {
                 _borderCapStyle = value;
@@ -131,12 +131,12 @@ namespace CodeeloUI.Controls
         {
             Size = new Size(200, 200);
             SizeMode = PictureBoxSizeMode.Zoom;
-            SetStyle(ControlStyles.UserPaint 
-                | ControlStyles.ResizeRedraw 
-                | ControlStyles.Selectable 
-                | ControlStyles.UserMouse 
-                | ControlStyles.SupportsTransparentBackColor 
-                | ControlStyles.AllPaintingInWmPaint 
+            SetStyle(ControlStyles.UserPaint
+                | ControlStyles.ResizeRedraw
+                | ControlStyles.Selectable
+                | ControlStyles.UserMouse
+                | ControlStyles.SupportsTransparentBackColor
+                | ControlStyles.AllPaintingInWmPaint
                 | ControlStyles.OptimizedDoubleBuffer, true);
             DoubleBuffered = true;
         }
@@ -157,7 +157,7 @@ namespace CodeeloUI.Controls
 
             var rectContourSmooth = _borderInside ? contourIn : contourOn;
             var rectBorder = _borderInside ? borderIn : rectContourSmooth;
-            
+
             using (var lgb = new LinearGradientBrush(rectBorder, _borderColorFirst, _borderColorSecond, _gradientDirection))
             using (var penBorder = _useGradient ? new Pen(lgb, _borderSize) : new Pen(new SolidBrush(_borderColorFirst), _borderSize))
             using (var textureBrush = new TextureBrush(GetCanvasImage()))
@@ -168,7 +168,7 @@ namespace CodeeloUI.Controls
 
                 using (GraphicsPath pathRegion = new GraphicsPath())
                 {
-                    if(_makeCircle)
+                    if (_makeCircle)
                         pathRegion.AddEllipse(rectContourSmooth);
                     else
                         pathRegion.AddRectangle(rectContourSmooth);

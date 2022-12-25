@@ -1,12 +1,13 @@
-﻿using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Drawing2D;
+﻿using CodeeloUI.SupportClasses;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using CodeeloUI.SupportClasses.ToolTip;
+using System.ComponentModel;
+using System;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using CodeeloUI.Graphics;
+using System.Drawing.Drawing2D;
 
 namespace CodeeloUI.Components
 {
@@ -138,12 +139,12 @@ namespace CodeeloUI.Components
 
             var bmp = new Bitmap(fullBounds.Width, fullBounds.Height);
 
-            System.Drawing.Graphics g = null;
+            Graphics g = null;
             Brush backBrush = null;
             Brush textBrush = null;
             try
             {
-                g = System.Drawing.Graphics.FromImage(bmp);
+                g = Graphics.FromImage(bmp);
                 g.SmoothingMode = SmoothingMode.HighQuality;
                 g.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
@@ -245,7 +246,6 @@ namespace CodeeloUI.Components
                 || controlOrItem is GroupBox
                 || controlOrItem is Panel
                 || controlOrItem is TabControl
-                || controlOrItem is DataGrid
                 || controlOrItem is DataGridView
                 || controlOrItem is ListBox
                 || controlOrItem is ListView)

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32106.194
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeeloUI", "CodeeloUI.csproj", "{70DCC5F1-5665-4941-827B-AE880723FFD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeeloUI", "CodeeloUI.csproj", "{E32623FB-91BE-46A7-A747-DFDB495B1A67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{70DCC5F1-5665-4941-827B-AE880723FFD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70DCC5F1-5665-4941-827B-AE880723FFD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70DCC5F1-5665-4941-827B-AE880723FFD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70DCC5F1-5665-4941-827B-AE880723FFD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E32623FB-91BE-46A7-A747-DFDB495B1A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E32623FB-91BE-46A7-A747-DFDB495B1A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E32623FB-91BE-46A7-A747-DFDB495B1A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E32623FB-91BE-46A7-A747-DFDB495B1A67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3E30206C-6140-4B3B-A39E-4458154C411B}
+		SolutionGuid = {EF2561EF-FF7A-4549-8FFC-AD9C9FBE6554}
 	EndGlobalSection
 EndGlobal

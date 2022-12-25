@@ -1,240 +1,75 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{70DCC5F1-5665-4941-827B-AE880723FFD8}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodeeloUI</RootNamespace>
-    <AssemblyName>CodeeloUI</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
+    <TargetFrameworks>net6.0-windows;net48; net462; net47;net471;net472</TargetFrameworks>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <None Remove="CodeeloAnimateForm.bmp" />
+    <None Remove="CodeeloAnimator.bmp" />
+    <None Remove="CodeeloButton.bmp" />
+    <None Remove="CodeeloCalendar.bmp" />
+    <None Remove="CodeeloCheckBox.bmp" />
+    <None Remove="CodeeloCircularProgressBar.bmp" />
+    <None Remove="CodeeloComboBox.bmp" />
+    <None Remove="CodeeloControlDrag.bmp" />
+    <None Remove="CodeeloFormDrag.bmp" />
+    <None Remove="CodeeloGradientPanel.bmp" />
+    <None Remove="CodeeloGroupBox.bmp" />
+    <None Remove="CodeeloNotification.bmp" />
+    <None Remove="CodeeloNumericUpDownBmp.bmp" />
+    <None Remove="CodeeloPictureBox.bmp" />
+    <None Remove="CodeeloRadioButton.bmp" />
+    <None Remove="CodeeloSeparator.bmp" />
+    <None Remove="CodeeloShadow.bmp" />
+    <None Remove="CodeeloTextBox.bmp" />
+    <None Remove="CodeeloToggleButton.bmp" />
+    <None Remove="CodeeloToolTip.bmp" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Animation\Animator\AnimationExtensions.cs" />
-    <Compile Include="Animation\Animator\AnimationStatus.cs" />
-    <Compile Include="Animation\Animator\Animator.cs" />
-    <Compile Include="Animation\Effects\Color\ColorChannelShiftEffect.cs" />
-    <Compile Include="Animation\Effects\Color\ColorShiftEffect.cs" />
-    <Compile Include="Animation\Effects\ControlExtensions.cs" />
-    <Compile Include="Animation\Effects\Font\FontSizeEffect.cs" />
-    <Compile Include="Animation\Effects\ImageExtensions.cs" />
-    <Compile Include="Animation\Effects\Opacity\ControlFadeEffect.cs" />
-    <Compile Include="Animation\Effects\Opacity\ControlFadeEffectWithImageBlend.cs" />
-    <Compile Include="Animation\Effects\Opacity\FormFadeEffect.cs" />
-    <Compile Include="Animation\Effects\Opacity\State.cs" />
-    <Compile Include="Animation\Effects\Transform\BottomAnchoredHeightEffect.cs" />
-    <Compile Include="Animation\Effects\Transform\FoldEffect.cs" />
-    <Compile Include="Animation\Effects\Transform\HorizontalFoldEffect.cs" />
-    <Compile Include="Animation\Effects\Transform\LeftAnchoredWidthEffect.cs" />
-    <Compile Include="Animation\Effects\Transform\RightAnchoredWidthEffect.cs" />
-    <Compile Include="Animation\Effects\Transform\TopAnchoredHeightEffect.cs" />
-    <Compile Include="Animation\Effects\Transform\VerticalFoldEffect.cs" />
-    <Compile Include="Animation\Effects\Transform\YLocationEffect.cs" />
-    <Compile Include="Controls\CodeeloComboBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CodeeloNumericUpDown.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ToolTip\CodeeloBorder.cs" />
-    <Compile Include="Components\CodeeloToolTip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\CodeeloToolTip.Designer.cs">
-      <DependentUpon>CodeeloToolTip.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Enums\CodeeloBorderDirection.cs" />
-    <Compile Include="ToolTip\CodeeloLayeredWindow.cs" />
-    <Compile Include="ToolTip\CodeeloTipStyle.cs" />
-    <Compile Include="Components\CodeeloAnimateForm.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\CodeeloAnimateForm.Designer.cs">
-      <DependentUpon>CodeeloAnimateForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Components\CodeeloAnimator.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\CodeeloAnimator.Designer.cs">
-      <DependentUpon>CodeeloAnimator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Components\CodeeloControlDrag.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\CodeeloControlDrag.Designer.cs">
-      <DependentUpon>CodeeloControlDrag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Components\CodeeloFormDrag.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\CodeeloFormDrag.Designer.cs">
-      <DependentUpon>CodeeloFormDrag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CodeeloButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CodeeloCircularProgressBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CodeeloGroupBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\CodeeloNotification.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\CodeeloNotification.Designer.cs">
-      <DependentUpon>CodeeloNotification.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CodeeloPictureBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CodeeloDateTimePicker.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CodeeloGradientPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CodeeloRadioButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CodeeloScrollBarVertical.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\CodeeloSeparator.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\CodeeloShadowEffect.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\CodeeloShadowEffect.Designer.cs">
-      <DependentUpon>CodeeloShadowEffect.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CodeeloTextBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\CodeeloTextBox.Designer.cs">
-      <DependentUpon>CodeeloTextBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CodeeloToggleButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CodeeloCheckBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Animation\Animator\EasingFunctions.cs" />
-    <Compile Include="Animation\Effects\EffectInteractions.cs" />
-    <Compile Include="Enums\AnimationEffect.cs" />
-    <Compile Include="Enums\CheckBoxMark.cs" />
-    <Compile Include="Enums\EasingFunction.cs" />
-    <Compile Include="Graphics\FormAnimateEffects.cs" />
-    <Compile Include="Animation\Effects\IEffect.cs" />
-    <Compile Include="SupportControls\Notification.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SupportControls\Notification.Designer.cs">
-      <DependentUpon>Notification.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Enums\NotificationAction.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <EmbeddedResource Include="Components\Icons\CodeeloAnimateForm.bmp" />
+    <EmbeddedResource Include="Components\Icons\CodeeloAnimator.bmp" />
+    <EmbeddedResource Include="Components\Icons\CodeeloControlDrag.bmp" />
+    <EmbeddedResource Include="Components\Icons\CodeeloFormDrag.bmp" />
+    <EmbeddedResource Include="Components\Icons\CodeeloNotification.bmp" />
+    <EmbeddedResource Include="Components\Icons\CodeeloShadow.bmp" />
+    <EmbeddedResource Include="Components\Icons\CodeeloToolTip.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloButton.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloCalendar.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloCheckBox.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloCircularProgressBar.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloComboBox.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloGradientPanel.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloGroupBox.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloNumericUpDownBmp.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloPictureBox.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloRadioButton.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloSeparator.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloTextBox.bmp" />
+    <EmbeddedResource Include="Controls\Icons\CodeeloToggleButton.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Graphics\GraphicsUtils.cs" />
-    <Compile Include="Enums\TextPosition.cs" />
-    <Compile Include="Animation\Effects\Transform\XLocationEffect.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <EmbeddedResource Include="Controls\CodeeloTextBox.resx">
-      <DependentUpon>CodeeloTextBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SupportControls\Notification.resx">
-      <DependentUpon>Notification.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\calendarWhite_34px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\calendarBlack_34px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cancel_24px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pin_20px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\unpin_20px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Components\Icons\CodeeloAnimator.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloCheckBox.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloCircularProgressBar.bmp" />
-    <EmbeddedResource Include="Components\Icons\CodeeloNotification.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloRadioButton.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloSeparator.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloToggleButton.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Components\Icons\CodeeloAnimateForm.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloButton.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloCalendar.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloComboBox.bmp" />
-    <EmbeddedResource Include="Components\Icons\CodeeloControlDrag.bmp" />
-    <EmbeddedResource Include="Components\Icons\CodeeloFormDrag.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloGradientPanel.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloGroupBox.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloPictureBox.bmp" />
-    <EmbeddedResource Include="Components\Icons\CodeeloShadow.bmp" />
-    <EmbeddedResource Include="Controls\Icons\CodeeloTextBox.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Components\Icons\CodeeloToolTip.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Controls\Icons\CodeeloNumericUpDownBmp.bmp" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

@@ -1,5 +1,6 @@
-﻿using CodeeloUI.Animation.Animator;
-using CodeeloUI.Animation.Effects.Transform;
+﻿using CodeeloUI.SupportClasses;
+using CodeeloUI.SupportClasses.Animation.Animator;
+using CodeeloUI.SupportClasses.Animation.Effects.Transform;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,14 +33,14 @@ namespace CodeeloUI.Controls
         public event EventHandler ValueChanged;
         #endregion
         #region [ Свойства класса ]
-        public Color FillColor 
+        public Color FillColor
         {
             get => _fillColor;
             set
             {
                 _fillColor = value;
                 Invalidate();
-            } 
+            }
         }
         public Color FillColorSecond
         {
@@ -59,32 +60,36 @@ namespace CodeeloUI.Controls
                 Invalidate();
             }
         }
-        public int MinValue { get => _minValue; 
+        public int MinValue
+        {
+            get => _minValue;
             set
             {
                 _minValue = value < 0 ? 0 : value > MaxValue ? MaxValue : value;
             }
         }
-        public int MaxValue { get => _maxValue; set
+        public int MaxValue
+        {
+            get => _maxValue; set
             {
                 _maxValue = value < MinValue ? MinValue : value;
             }
         }
         public int Interval { get; set; } = 10;
-        public int Value 
-        { 
-            get => _value; 
-            set 
+        public int Value
+        {
+            get => _value;
+            set
             {
                 _value = value < MinValue ? MinValue : value > MaxValue ? MaxValue : value;
                 Invalidate();
                 if (ValueChanged != null)
                     ValueChanged(this, new EventArgs());
-            }  
+            }
         }
-        public int Radius 
+        public int Radius
         {
-            get => _radius; 
+            get => _radius;
             set
             {
                 _radius = value;
@@ -149,7 +154,7 @@ namespace CodeeloUI.Controls
             _plusCircleArea = new Rectangle(Width - 5 - x, 2, x, Height - 4);
             _mainArea = new Rectangle(5 + (x / 2), 4, Width - x - 10, Height - 8);
 
-            using (var path = Graphics.GraphicsUtils.GetFigurePath(Rectangle.Inflate(ClientRectangle, -1, -1), Radius))
+            using (var path = GraphicsUtils.GetFigurePath(Rectangle.Inflate(ClientRectangle, -1, -1), Radius))
             using (var gradientBrush = new LinearGradientBrush(ClientRectangle, FillColor, FillColorSecond, GradientDirection))
             {
                 graphics.FillPath(gradientBrush, path);
@@ -165,16 +170,16 @@ namespace CodeeloUI.Controls
 
             graphics.DrawString("–", new Font(FontFamily.GenericSansSerif, 24), new SolidBrush(ForeColor)
                 , _minusCircleArea.X + 3 + (_minusCircleArea.Width / 4 - minusTextSize.Width / 4)
-                , _minusCircleArea.Y-3 + (_minusCircleArea.Height / 2 - minusTextSize.Height / 2));
+                , _minusCircleArea.Y - 3 + (_minusCircleArea.Height / 2 - minusTextSize.Height / 2));
 
             graphics.DrawString("+", new Font(FontFamily.GenericSansSerif, 24), new SolidBrush(ForeColor)
-                , _plusCircleArea.X + _plusCircleArea.Width/2+(_plusCircleArea.Width / 4 - plusTextSize.Width / 2)
+                , _plusCircleArea.X + _plusCircleArea.Width / 2 + (_plusCircleArea.Width / 4 - plusTextSize.Width / 2)
                 , _plusCircleArea.Y + (_plusCircleArea.Height / 2 - plusTextSize.Height / 2));
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
         {
-            if(_minusCircleArea.Contains(e.Location))
+            if (_minusCircleArea.Contains(e.Location))
                 Value -= Interval;
             if (_plusCircleArea.Contains(e.Location))
                 Value += Interval;

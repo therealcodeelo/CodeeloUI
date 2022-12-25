@@ -17,7 +17,7 @@ namespace CodeeloUI.Controls
         #endregion
 
         #region [ Свойства класса ]
-        
+
         [Description("Первый цвет для градиентного заполнения"), Category("Свойства градиента")]
         public Color ColorFillFirst
         {
@@ -32,8 +32,8 @@ namespace CodeeloUI.Controls
         public Color ColorFillSecond
         {
             get => _secondFillColor;
-            set 
-            { 
+            set
+            {
                 _secondFillColor = value;
                 Invalidate();
             }

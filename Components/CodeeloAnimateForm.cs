@@ -1,9 +1,9 @@
-﻿using System;
+﻿using CodeeloUI.Enums;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using CodeeloUI.Graphics;
 
 namespace CodeeloUI.Components
 {
@@ -59,7 +59,7 @@ namespace CodeeloUI.Components
             AnimateWindow(_sourceForm.Handle, millisecond, (uint)_activateEffect | 0x00020000);
             _sourceForm.Show();
         }
-        public void ShowForm(Form source,int millisecond)
+        public void ShowForm(Form source, int millisecond)
         {
             AnimateWindow(source.Handle, millisecond, (uint)_activateEffect | 0x00020000);
             source.Show();

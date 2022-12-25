@@ -1,10 +1,10 @@
-﻿using System;
+﻿using CodeeloUI.Enums;
+using CodeeloUI.SupportClasses;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using CodeeloUI.Enums;
-using CodeeloUI.Graphics;
 
 namespace CodeeloUI.Controls
 {
@@ -27,7 +27,7 @@ namespace CodeeloUI.Controls
         #region [ Свойства класса ]
         [Description("Цвет текста элемента при его выборе"), Category("Внешний вид")]
         public Color TextForeColor { get; set; } = Color.DimGray;
-        [Description("Высота заголовка"),Category("Настройки внешнего вида")]
+        [Description("Высота заголовка"), Category("Настройки внешнего вида")]
         public int HeaderHeight
         {
             get => _headerHeight;
@@ -103,7 +103,7 @@ namespace CodeeloUI.Controls
             }
         }
         #endregion
-       
+
         public CodeeloGroupBox()
         {
             Font = new Font(FontFamily.GenericSerif, 14, FontStyle.Regular);
@@ -133,27 +133,27 @@ namespace CodeeloUI.Controls
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
             using (var borderPen = new Pen(BorderColor, borderWidth))
             using (var headerBrush = new SolidBrush(BorderColor))
-            using (var borderPath = GraphicsUtils.GetFigurePath(Rectangle.Inflate(ClientRectangle, -2, -2), borderRadius)) 
+            using (var borderPath = GraphicsUtils.GetFigurePath(Rectangle.Inflate(ClientRectangle, -2, -2), borderRadius))
             {
                 if (borderRadius > 2)
                 {
                     borderPen.Alignment = PenAlignment.Inset;
-                    graphics.FillPath(new SolidBrush(FillColor), 
-                        GraphicsUtils.GetFigurePath(new RectangleF(borderWidth, HeaderHeight / 2, 
+                    graphics.FillPath(new SolidBrush(FillColor),
+                        GraphicsUtils.GetFigurePath(new RectangleF(borderWidth, HeaderHeight / 2,
                         Width - 1F - borderWidth * 2, Height - (HeaderHeight + 2f) / 2f), borderRadius));
                     graphics.DrawPath(borderPen, borderPath);
-                   
+
                     graphics.FillRectangle(headerBrush, 0.7f, (HeaderHeight / 2f) + 3, Width - 1.7f, HeaderHeight / 2f);
                     graphics.FillPath(headerBrush, GraphicsUtils.GetFigurePath(new RectangleF(0f, 0f, Width - 1F, HeaderHeight), borderRadius));
                 }
                 else
-                {                   
+                {
                     graphics.DrawRectangle(borderPen, 0f, 0f, Width - 1f, Height - 1f);
                     graphics.FillRectangle(new SolidBrush(FillColor), 0f + borderWidth / 2f, 0f, Width - 1f - borderWidth, Height - 1f - borderWidth / 2f);
                     graphics.FillRectangle(headerBrush, 0f, 0f, Width - 1f, _headerHeight);
                 }
             }
-            
+
             int leftPadding = Padding.Left < borderWidth / 2 ? borderWidth / 2 : Padding.Left;
             int rightPadding = Padding.Right < borderWidth / 2 ? borderWidth / 2 : Padding.Right;
             int bottomPadding = Padding.Bottom < borderWidth / 2 ? borderWidth / 2 : Padding.Bottom;
@@ -178,7 +178,7 @@ namespace CodeeloUI.Controls
                     break;
             }
             graphics.DrawString(Text, Font, new SolidBrush(TextForeColor), positionX, positionY);
-            graphics.DrawString(Text, Font, new SolidBrush(Color.FromArgb(64, TextForeColor)), positionX+1, positionY+1);
+            graphics.DrawString(Text, Font, new SolidBrush(Color.FromArgb(64, TextForeColor)), positionX + 1, positionY + 1);
         }
 
         protected override void OnMouseEnter(EventArgs e)

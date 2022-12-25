@@ -25,7 +25,7 @@ namespace CodeeloUI.Components
                 if (_sourceControl == value)
                     return;
 
-                if(_sourceControl != null)
+                if (_sourceControl != null)
                     _sourceControl.MouseDown -= new MouseEventHandler(this.SourceControl_MouseDown);
 
                 _sourceControl = value;

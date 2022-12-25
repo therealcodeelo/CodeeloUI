@@ -1,4 +1,4 @@
-﻿using CodeeloUI.Graphics;
+﻿using CodeeloUI.SupportClasses;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -18,7 +18,7 @@ namespace CodeeloUI.Components
         private int _borderRadius = 6;
 
         private Bitmap _shadowImage;
-        
+
         #endregion
 
         #region [ Свойства класса ]
@@ -29,11 +29,11 @@ namespace CodeeloUI.Components
             set
             {
                 _sourceControl = value;
-                if(_sourceControl?.Parent != null)
+                if (_sourceControl?.Parent != null)
                     _sourceControl.Parent.Paint += SourceControlParent_Paint;
 
             }
-        }     
+        }
         [Description("Использовать эффект тени")]
         public bool UseShadowEffect
         {
