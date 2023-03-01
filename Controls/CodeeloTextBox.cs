@@ -229,7 +229,6 @@ namespace CodeeloUI.Controls
         private void textBox_MouseLeave(object sender, EventArgs e) => OnMouseLeave(e);
         private void textBox_MouseEnter(object sender, EventArgs e) => OnMouseEnter(e);
         private void textBox_KeyPress(object sender, KeyPressEventArgs e) => OnKeyPress(e);
-
         private void textBox_Enter(object sender, EventArgs e)
         {
             _isFocused = true;
@@ -243,5 +242,9 @@ namespace CodeeloUI.Controls
             SetPlaceholder();
         }
         #endregion
+
+        private void textBox_KeyDown(object sender, KeyEventArgs e) => OnKeyDown(e);
+
+        private void textBox_KeyUp(object sender, KeyEventArgs e) => OnKeyUp(e);
     }
 }

@@ -5,6 +5,19 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
+    <PackageId>CodeeloUI</PackageId>
+    <Title>CodeeloUI</Title>
+    <Version>1.1.0</Version>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Codeelo</Authors>
+    <Company>Codeelo</Company>
+    <Product>CodeeloUI</Product>
+    <Description>Free tool for more flexible design of WinForms applications</Description>
+    <Copyright>Codeelo</Copyright>
+    <PackageProjectUrl>https://github.com/therealcodeelo/CodeeloUI</PackageProjectUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/therealcodeelo/CodeeloUI</RepositoryUrl>
+    <PackageTags>C# csharp WindowsForms Design</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -51,6 +64,13 @@
     <EmbeddedResource Include="Controls\Icons\CodeeloSeparator.bmp" />
     <EmbeddedResource Include="Controls\Icons\CodeeloTextBox.bmp" />
     <EmbeddedResource Include="Controls\Icons\CodeeloToggleButton.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\С ноутбука\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
