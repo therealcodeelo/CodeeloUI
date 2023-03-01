@@ -18,27 +18,27 @@ namespace CodeeloUI.Controls
         private int _borderRadius = 20;
 
         private bool _useGradient;
-        private Color _firstFillColor = Color.FromArgb(20, 30, 40);
-        private Color _secondFillColor = Color.DodgerBlue;
+        private Color _firstFillColor = Color.FromArgb(139, 144, 176);
+        private Color _secondFillColor = Color.FromArgb(159, 185, 189);
         private LinearGradientMode _gradientDirection = LinearGradientMode.ForwardDiagonal;
 
-        private bool _useGradientBorder = true;
-        private Color _firstBorderColor = Color.DodgerBlue;
-        private Color _secondBorderColor = Color.SpringGreen;
+        private bool _useGradientBorder = false;
+        private Color _firstBorderColor = Color.Transparent;
+        private Color _secondBorderColor = Color.Transparent;
         private LinearGradientMode _gradientBorderDirection = LinearGradientMode.ForwardDiagonal;
 
         private TextPosition _textPosition = TextPosition.Center;
 
         private bool _isEntered;
         private bool _isClicked;
-        private Color _onOverFirstFillColor = Color.DimGray;
-        private Color _onOverSecondFillColor = Color.DimGray;
-        private Color _onOverFirstBorderColor = Color.DimGray;
-        private Color _onOverSecondBorderColor = Color.DimGray;
-        private Color _onClickFirstFillColor = Color.DarkGray;
-        private Color _onClickSecondFillColor = Color.DarkGray;
-        private Color _onClickFirstBorderColor = Color.DarkGray;
-        private Color _onClickSecondBorderColor = Color.DarkGray;
+        private Color _onOverFirstFillColor = Color.FromArgb(159, 164, 196);
+        private Color _onOverSecondFillColor = Color.FromArgb(179, 205, 209); 
+        private Color _onOverFirstBorderColor = Color.Transparent;
+        private Color _onOverSecondBorderColor = Color.Transparent;
+        private Color _onClickFirstFillColor = Color.FromArgb(179, 184, 216);
+        private Color _onClickSecondFillColor = Color.FromArgb(199, 225, 229);
+        private Color _onClickFirstBorderColor = Color.Transparent;
+        private Color _onClickSecondBorderColor = Color.Transparent;
         #endregion
 
         #region [ Свойства класса ]
@@ -74,7 +74,7 @@ namespace CodeeloUI.Controls
             }
         }
         [Description("Основной цвет для заполнения фона кнопки"), Category("Свойства градиента")]
-        public Color ColorFillFirst
+        public Color ColorFill_1
         {
             get => _firstFillColor;
             set
@@ -84,7 +84,7 @@ namespace CodeeloUI.Controls
             }
         }
         [Description("Второй цвет для градиентного заполнения"), Category("Свойства градиента")]
-        public Color ColorFillSecond
+        public Color ColorFill_2
         {
             get => _secondFillColor;
             set
@@ -114,7 +114,7 @@ namespace CodeeloUI.Controls
             }
         }
         [Description("Основной цвет для отрисовки границ"), Category("Свойства границ элемента")]
-        public Color GradientBorderColorFirst
+        public Color BorderColor_1
         {
             get => _firstBorderColor;
             set
@@ -124,7 +124,7 @@ namespace CodeeloUI.Controls
             }
         }
         [Description("Второй цвет для градиентной отрисовки границ"), Category("Свойства границ элемента")]
-        public Color GradientBorderColorSecond
+        public Color BorderColor_2
         {
             get => _secondBorderColor;
             set
@@ -154,49 +154,49 @@ namespace CodeeloUI.Controls
             }
         }
         [Description("Основной цвет кнопки при наведении на нее указателя мыши"), Category("Свойства поведения")]
-        public Color OnOverFirstFillColor
+        public Color OnOver_FillColor_1
         {
             get => _onOverFirstFillColor;
             set => _onOverFirstFillColor = value;
         }
         [Description("Дополнительный цвет градиента кнопки при наведении на нее указателя мыши"), Category("Свойства поведения")]
-        public Color OnOverSecondFillColor
+        public Color OnOver_FillColor_2
         {
             get => _onOverSecondFillColor;
             set => _onOverSecondFillColor = value;
         }
         [Description("Основной цвет границ кнопки при наведении на нее указателя мыши"), Category("Свойства поведения")]
-        public Color OnOverFirstBorderColor
+        public Color OnOver_BorderColor_1
         {
             get => _onOverFirstBorderColor;
             set => _onOverFirstBorderColor = value;
         }
         [Description("Дополнительный цвет градиента границ кнопки при наведении на нее указателя мыши"), Category("Свойства поведения")]
-        public Color OnOverSecondBorderColor
+        public Color OnOver_BorderColor_2
         {
             get => _onOverSecondBorderColor;
             set => _onOverSecondBorderColor = value;
         }
         [Description("Основной цвет кнопки при нажатии на нее мыши"), Category("Свойства поведения")]
-        public Color OnClickFirstFillColor
+        public Color OnClick_FillColor_1
         {
             get => _onClickFirstFillColor;
             set => _onClickFirstFillColor = value;
         }
         [Description("Дополнительный цвет градиента кнопки при нажатии на нее мыши"), Category("Свойства поведения")]
-        public Color OnClickSecondFillColor
+        public Color OnClick_FillColor_2
         {
             get => _onClickSecondFillColor;
             set => _onClickSecondFillColor = value;
         }
         [Description("Основной цвет границ кнопки при нажатии на нее мыши"), Category("Свойства поведения")]
-        public Color OnClickFirstBorderColor
+        public Color OnClick_BorderColor_1
         {
             get => _onClickFirstBorderColor;
             set => _onClickFirstBorderColor = value;
         }
         [Description("Дополнительный цвет градиента границ кнопки при нажатии на нее мыши"), Category("Свойства поведения")]
-        public Color OnClickSecondBorderColor
+        public Color OnClick_BorderColor_2
         {
             get => _onClickSecondBorderColor;
             set => _onClickSecondBorderColor = value;
