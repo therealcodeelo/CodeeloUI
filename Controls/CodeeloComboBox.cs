@@ -120,11 +120,15 @@ namespace CodeeloUI.Controls
                     _comboBox.DropDownStyle = value;
             }
         }
-
         public int DropDownWidth
         {
             get => _comboBox.DropDownWidth;
             set => _comboBox.DropDownWidth = value;
+        }
+        public bool DroppedDown
+        {
+            get => _comboBox.DroppedDown;
+            set => _comboBox.DroppedDown = value;
         }
 
         [Category("Привязка данных")]
