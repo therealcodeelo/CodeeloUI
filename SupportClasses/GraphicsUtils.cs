@@ -1,10 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using CodeeloUI.Controls;
 using CodeeloUI.SupportClasses.ToolTip;
+using CodeeloUI.Enums;
 
 namespace CodeeloUI.SupportClasses
 {
@@ -18,9 +20,12 @@ namespace CodeeloUI.SupportClasses
         [DllImport("user32.dll")]
         private static extern bool ReleaseDC(IntPtr hWnd, IntPtr hDC);
 
-#endregion
+        [DllImport("dwmapi.dll"), Description("https://learn.microsoft.com/ru-ru/windows/win32/api/dwmapi/nf-dwmapi-dwmsetwindowattribute")]
+        internal static extern IntPtr DwmSetWindowAttribute(IntPtr hwnd, DwmSetWindowAttributeFlags dwAttribute, ref int pvAttribute, int cbAttribute);
 
-#region [ DropShadow Класс]
+        #endregion
+
+        #region [ DropShadow Класс]
         private static class DropShadow
         {
             const int CHANNELS = 4;
@@ -272,20 +277,6 @@ namespace CodeeloUI.SupportClasses
 
             return path;
         }
-        internal static GraphicsPath GetFigurePath(Rectangle rect)
-        {
-            var heightPart = rect.Height / 10F;
-            RectangleF topArc = new RectangleF(rect.X, rect.Y, rect.Width - 1F, heightPart);
-            RectangleF area = new RectangleF(rect.X, rect.Y + heightPart / 2F, rect.Width - 1F, 9F * heightPart);
-            RectangleF bottomArc = new RectangleF(rect.X, rect.Y + 9F * heightPart, rect.Width - 1F, heightPart);
-            GraphicsPath path = new GraphicsPath();
-            path.StartFigure();
-            path.AddArc(topArc, 180, 180);
-            path.AddRectangle(area);
-            path.AddArc(bottomArc, 0, 180);
-            path.CloseFigure();
-            return path;
-        }
         internal static GraphicsPath GetFigurePath(CodeeloToggleButton toggleButton)
         {
             int arcSize = toggleButton.Height - 1;
@@ -307,46 +298,6 @@ namespace CodeeloUI.SupportClasses
             path.AddArc(rect.Right - diameter, rect.Y, diameter, diameter, 270, 90);
             path.AddArc(rect.Right - diameter, rect.Bottom - diameter, diameter, diameter, 0, 90);
             path.AddArc(rect.X, rect.Bottom - diameter, diameter, diameter, 90, 90);
-            path.CloseFigure();
-            return path;
-        }
-        internal static GraphicsPath GetTopSideTriangle(float side, float X, float Y)
-        {
-            GraphicsPath path = new GraphicsPath();
-            float h = (float)(side * Math.Sqrt(3) / 2);
-
-            float startX = X;
-            float middleX = startX + 0.5f * side;
-            float endX = startX + side;
-
-            float startY = Y;
-            float middleY = Y + h;
-            float endY = Y;
-
-            path.StartFigure();
-            path.AddLine(startX, startY, middleX, middleY);
-            path.AddLine(middleX, middleY, endX, endY);
-            path.AddLine(endX, endY, startX, startY);
-            path.CloseFigure();
-            return path;
-        }
-        internal static GraphicsPath GetBottomSideTriangle(float side, float X, float Y)
-        {
-            GraphicsPath path = new GraphicsPath();
-            float h = (float)(side * Math.Sqrt(3) / 2);
-
-            float startX = X;
-            float middleX = startX + 0.5f * side;
-            float endX = startX + side;
-
-            float startY = Y + h;
-            float middleY = Y;
-            float endY = Y + h;
-
-            path.StartFigure();
-            path.AddLine(startX, startY, middleX, middleY);
-            path.AddLine(middleX, middleY, endX, endY);
-            path.AddLine(endX, endY, startX, startY);
             path.CloseFigure();
             return path;
         }
@@ -410,7 +361,7 @@ namespace CodeeloUI.SupportClasses
             return path;
         }
 
-        public static void DrawRectangle(System.Drawing.Graphics g, Rectangle rectangle, Brush brush, CodeeloBorder border, int radius, Color shadowColor, int shadowRadius = 0, int offsetX = 0, int offsetY = 0)
+        public static void DrawRectangle(Graphics g, Rectangle rectangle, Brush brush, CodeeloBorder border, int radius, Color shadowColor, int shadowRadius = 0, int offsetX = 0, int offsetY = 0)
         {
             if (shadowColor.A == 0 || (shadowRadius == 0 && offsetX == 0 && offsetY == 0))
             {
@@ -438,14 +389,14 @@ namespace CodeeloUI.SupportClasses
             }
         }
 
-        public static void DrawRectangle(System.Drawing.Graphics g, Rectangle rectangle, Brush brush = null, CodeeloBorder border = null, int radius = 0)
+        public static void DrawRectangle(Graphics g, Rectangle rectangle, Brush brush = null, CodeeloBorder border = null, int radius = 0)
         {
             using (var path = GetRoundedRectangle(rectangle, radius))
             {
                 DrawPath(g, path, brush, border);
             }
         }
-        public static void DrawPath(System.Drawing.Graphics g, GraphicsPath path, Brush brush = null, CodeeloBorder border = null)
+        public static void DrawPath(Graphics g, GraphicsPath path, Brush brush = null, CodeeloBorder border = null)
         {
             if (CodeeloBorder.IsValid(border) && border.Behind)
             {

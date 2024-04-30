@@ -201,6 +201,8 @@ namespace CodeeloUI.Controls
             get => _onClickSecondBorderColor;
             set => _onClickSecondBorderColor = value;
         }
+        [Description("Рисовать градиент на границе"), Category("Свойства градиента границы")]
+        public bool DrawTextShadow { get; set; } = true;
         #endregion
 
         #region [ Скрытые свойства класса ]
@@ -350,7 +352,9 @@ namespace CodeeloUI.Controls
             }
 
             graphics.DrawString(Text, Font, new SolidBrush(ForeColor), positionX, positionY);
-            graphics.DrawString(Text, Font, new SolidBrush(Color.FromArgb(64, ForeColor)), positionX + 1, positionY + 1);
+            if(DrawTextShadow)
+                graphics.DrawString(Text, Font, new SolidBrush(Color.FromArgb(64, ForeColor)), positionX + 1, positionY + 1);
+
         }
         protected override void OnMouseEnter(EventArgs e)
         {

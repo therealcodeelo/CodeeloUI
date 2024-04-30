@@ -7,7 +7,7 @@
     <Nullable>disable</Nullable>
     <PackageId>CodeeloUI</PackageId>
     <Title>CodeeloUI</Title>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Codeelo</Authors>
     <Company>Codeelo</Company>
@@ -15,7 +15,7 @@
     <Description>Free tool for more flexible design of WinForms applications</Description>
     <Copyright>Codeelo</Copyright>
     <PackageProjectUrl>https://github.com/therealcodeelo/CodeeloUI</PackageProjectUrl>
-    <PackageIcon>logo.png</PackageIcon>
+    <PackageIcon>smallLogo.png</PackageIcon>
     <RepositoryUrl>https://github.com/therealcodeelo/CodeeloUI</RepositoryUrl>
     <PackageTags>C# csharp WindowsForms Design</PackageTags>
   </PropertyGroup>
@@ -67,7 +67,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="D:\С ноутбука\logo.png">
+    <None Include="D:\_YOUTUBE\smallLogo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
